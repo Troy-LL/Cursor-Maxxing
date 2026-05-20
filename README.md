@@ -16,6 +16,8 @@ Toolkit for Cursor — rules, skills, and **custom commands only where the IDE f
 
 **[.cursor/docs/USER-MANUAL.md](.cursor/docs/USER-MANUAL.md)** — or `@USER-MANUAL.md` in chat.
 
+**New repo:** run **`/bootstrap`** → fill `docs/SPEC.md` → add rules/skills when ready.
+
 ## Use Cursor built-ins first
 
 | Native | Instead of custom |
@@ -31,6 +33,8 @@ Toolkit for Cursor — rules, skills, and **custom commands only where the IDE f
 | `/find-skills` | [skills.sh](https://skills.sh/) — separate ecosystem |
 | `/slop-review` | Git slop audit vs `main` — not in IDE |
 | `/toolkit` | Inventory this meta repo |
+| `/bootstrap` | Starter tree: `docs/`, `.agents/`, empty `.cursor/` slots |
+| `/pr-review` | PR-style review vs default branch |
 
 ## Opt-in rules
 

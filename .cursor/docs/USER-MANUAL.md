@@ -47,8 +47,10 @@ Do not duplicate these with custom commands.
 | `/find-skills` | Profile repo, search [skills.sh](https://skills.sh/), recommend installs |
 | `/slop-review` | Uncommitted vs `main` — slop audit, commit or sub-refactor |
 | `/toolkit` | Inventory `.cursor/` in this repo |
+| `/bootstrap` | Empty starter tree: `docs/`, `.agents/`, `.cursor/{commands,rules,skills}` — no rule content |
+| `/pr-review` | Branch vs base — reviewer narrative (risks, test plan) |
 
-Global copies: `~/.cursor/commands/` for `write-rule`, `find-skills`, `slop-review` (no `/toolkit` globally).
+Global copies: `~/.cursor/commands/` for `write-rule`, `find-skills`, `slop-review`, `bootstrap`, `pr-review` (no `/toolkit` globally).
 
 ---
 
@@ -113,6 +115,13 @@ Ask in chat: "Audit `.cursor/rules` using write-cursor-rules" — or use **`/rul
 ### Clean code mode
 
 **`@clean-coder`** on the files you're working on.
+
+### Bootstrap a new repo
+
+1. **`/bootstrap`** in the new project root
+2. Fill `docs/SPEC.md`, then `ARCHITECTURE.md` / `DESIGN.md`
+3. Prompt with `@SPEC.md`, `@ARCHITECTURE.md`
+4. Add rules/skills later via **`/write-rule`**, **`/find-skills`**, or Cursor **`/rules`**
 
 ### Ship toolkit
 
