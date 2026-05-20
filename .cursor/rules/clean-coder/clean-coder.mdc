@@ -1,0 +1,99 @@
+---
+description: >-
+  Opt-in only. Clean, organized code + 200 LOC cap per component/module file.
+  Apply ONLY when the user @mentions clean-coder, says "use clean-coder", or runs
+  /clean-coder. Never auto-apply from context alone.
+alwaysApply: false
+---
+
+# Clean coder (opt-in)
+
+**Activation:** User must invoke via `@clean-coder`, **"use clean-coder"**, or **`/clean-coder`**. Do not infer this rule from unrelated tasks.
+
+**Priority:** Clarity and organization over cleverness. Smallest correct solution.
+
+---
+
+## 200 LOC limit
+
+Applies to each **single-responsibility file**: React/Vue/Svelte component, page, hook file, service class, or module that owns one primary export.
+
+| Measure | Rule |
+|---------|------|
+| **Count** | Non-blank lines in the file (exclude license headers only) |
+| **Max** | **200 lines** per component/module file |
+| **Warn** | At **~180 lines**, plan a split before adding more |
+| **Excluded** | Barrel `index.ts` re-exports only; generated files; config |
+
+### When over the cap
+
+1. **Split by responsibility** — UI vs logic vs types vs constants
+2. **Extract** — hooks (`use*.ts`), helpers, subcomponents in colocated folders
+3. **Never** pad with comments or blank lines to stay under limit
+4. **Never** split arbitrarily mid-function — split along domain boundaries
+
+---
+
+## Clean code (default stance)
+
+### Structure
+
+- One clear purpose per file and per function
+- Order: imports → types/constants → main export → helpers (private last)
+- Colocate tests next to source or in parallel `__tests__` — match repo convention
+- Group related code; separate sections with one blank line, not banner comments
+
+### Functions & components
+
+- Prefer **under 40 lines** per function; extract when branching or nesting deepens
+- Max **3–4 parameters**; use an options object if more are needed
+- Early returns over nested `if` pyramids
+- No dead code, commented-out blocks, or unused imports
+
+### Naming
+
+- Names reveal intent: `fetchUserProfile`, not `getData`
+- Booleans: `is*`, `has*`, `can*`
+- Match existing project vocabulary — do not invent a parallel dialect
+
+### Abstractions
+
+- **Rule of three** — duplicate twice is OK; abstract on the third intentional use
+- No one-off helpers, wrapper components, or "utils" files for a single call site
+- Prefer composition over inheritance unless the codebase already uses inheritance
+
+### Comments & docs
+
+- Code explains **what**; comments only for **why** (non-obvious business rules, invariants)
+- No tutorial comments, no changelog in source files unless asked
+
+### Errors & types
+
+- Handle errors at boundaries; do not blanket try/catch
+- Narrow types; avoid `any` unless the repo already allows at boundaries
+- Share types in `types.ts` when used by 2+ files in the same feature
+
+### Style consistency
+
+- Match formatter, linter, and patterns in neighboring files
+- Same import style, quote style, and export style as the rest of the module
+- Prefer immutable data and pure functions where the stack allows
+
+---
+
+## Organization checklist (before finishing)
+
+- [ ] Each new/edited file ≤ 200 LOC or split with a short rationale
+- [ ] No AI slop: scope creep, generic names, debug logs, placeholder TODOs
+- [ ] Imports sorted and minimal
+- [ ] Public API surface is obvious from file layout
+- [ ] Would a teammate find this without a walkthrough?
+
+---
+
+## When refactoring under this rule
+
+1. Read surrounding files first
+2. Improve structure without changing behavior unless asked
+3. Delete more than you add when removing slop
+4. Report: files touched, LOC before/after, what was split or extracted

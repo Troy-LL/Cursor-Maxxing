@@ -68,6 +68,7 @@ What you expect back (files created, summary, etc.)
 | `/toolkit` | List what is installed under `.cursor/` |
 | `/slop-review` | Audit uncommitted changes vs main for AI slop; commit or sub-refactor |
 | `/find-skills` | Profile this repo, search [skills.sh](https://skills.sh/), recommend tailored installs |
+| `/clean-coder` | Opt-in clean code + 200 LOC component cap |
 
 ### Global commands
 
@@ -91,6 +92,23 @@ alwaysApply: false      # true = every chat
 - **globs** — only when matching files are relevant
 
 Use the **`write-cursor-rules`** skill or `/write-rule` to author rules. See `.cursor/skills/write-cursor-rules/` for templates and examples.
+
+### Meta rules (auto when editing toolkit files)
+
+| Rule | Applies when |
+|------|----------------|
+| `rule-author.mdc` | Editing `.cursor/rules/**/*.mdc` |
+| `command-author.mdc` | Editing `.cursor/commands/**/*.md` |
+
+### Opt-in rules (`rules/<name>/`)
+
+Rules in subfolders are **off by default**. Invoke explicitly:
+
+| Rule | How to activate |
+|------|-----------------|
+| **clean-coder** | `@clean-coder`, say "use clean-coder", or `/clean-coder` |
+
+Standards: 200 LOC per component/module file, clean organization, minimal abstraction. See `.cursor/rules/clean-coder/clean-coder.mdc`.
 
 ---
 

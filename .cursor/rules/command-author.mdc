@@ -1,14 +1,73 @@
 ---
-description: When editing slash commands, follow write-cursor-commands skill conventions
+description: Slash command authoring — format, workflow, and checklist for .cursor/commands
 globs: .cursor/commands/**/*.md
 alwaysApply: false
 ---
 
 # Slash command authoring
 
-When creating or editing `.cursor/commands/*.md`:
+Applies when creating or editing `.cursor/commands/*.md`. For templates, see **write-cursor-commands** skill (`.cursor/skills/write-cursor-commands/`).
 
-1. Use **write-cursor-commands** skill.
-2. Filename = `/command` name (kebab-case, no README.md here).
-3. Structure: `#` title, imperative **Steps**, clear **Output**.
-4. Update `.cursor/docs/USER-MANUAL.md` command table for new project commands.
+## Locations
+
+| Scope | Path |
+|-------|------|
+| Project | `.cursor/commands/<name>.md` |
+| Global | `~/.cursor/commands/<name>.md` |
+
+**Filename = command name:** `lint-fix.md` → `/lint-fix`. No `README.md` in `commands/` (becomes `/readme`). Put guides in `.cursor/docs/`.
+
+## Required structure
+
+```markdown
+# Short title (shown in / menu)
+
+One paragraph: what this command does.
+
+## Steps
+1. Imperative agent actions
+
+## Output
+What to return or which files to create.
+```
+
+Optional sections: Context, Constraints, Examples. No YAML frontmatter in command files.
+
+## Style
+
+- **Imperative** steps — "Read X", "Write Y"
+- **One workflow per file** — split unrelated flows
+- **Explicit output** — files, format, or when to stop and ask
+- **Reference skills** for heavy playbooks (e.g. **write-cursor-rules**)
+- **Under ~80 lines** — use a skill if longer
+
+## Workflow
+
+1. Infer name (kebab-case), project vs global scope, and steps
+2. Write the `.md` file
+3. Add a row to `.cursor/docs/USER-MANUAL.md` command table for new project commands
+4. Tell the user: run `/command-name` in chat
+
+## Validation checklist
+
+- [ ] `.md` in `commands/` (correct scope)
+- [ ] Lowercase hyphenated filename
+- [ ] `#` title present
+- [ ] Steps + Output sections
+- [ ] No secrets in prompt text
+- [ ] Manual updated if project-facing
+
+## Pairing
+
+| Pattern | When |
+|---------|------|
+| Command → skill | `/write-rule` points at **write-cursor-rules** |
+| Command only | Short one-shot prompt |
+| Rule + command | This rule sets standards; command runs the workflow |
+
+**Keep commands** for explicit `/` workflows. **Use skills** for long templates. Do not migrate to skills unless the user asks.
+
+## Do not
+
+- Duplicate User Rules from Cursor settings into command files
+- Auto-run destructive git or install commands without user confirmation in the command body

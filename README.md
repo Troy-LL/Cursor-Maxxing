@@ -31,6 +31,11 @@ Quick help in chat: type **`/manual`**.
 | `/toolkit` | List commands, rules, skills, docs |
 | `/slop-review` | Audit uncommitted vs `main` for slop; commit or fix |
 | `/find-skills` | Context-aware skill discovery via `npx skills find` |
+| `/clean-coder` | Opt-in: 200 LOC cap, clean organized code |
+
+### Opt-in rules
+
+`.cursor/rules/clean-coder/` — not auto-applied. Use `@clean-coder` or `/clean-coder`.
 
 Add more: drop a `.md` file in `.cursor/commands/` (name = `/command`).
 

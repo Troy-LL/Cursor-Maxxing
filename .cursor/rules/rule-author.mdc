@@ -1,17 +1,54 @@
 ---
-description: When editing or creating .mdc rule files, follow the rule-writer skill workflow
+description: Cursor rule authoring — format, workflow, and checklist for .mdc rules
 globs: .cursor/rules/**/*.mdc
 alwaysApply: false
 ---
 
 # Rule file authoring
 
-When creating or editing files in `.cursor/rules/`:
+Applies when creating or editing `.cursor/rules/*.mdc`. For templates, see **write-cursor-rules** skill (`.cursor/skills/write-cursor-rules/`).
 
-1. Apply the **write-cursor-rules** skill (`.cursor/skills/write-cursor-rules/` or `~/.cursor/skills/write-cursor-rules/`).
-2. Keep one concern per `.mdc` file; target under ~50 lines.
-3. Frontmatter must include `description` and `alwaysApply`; add `globs` when not always-on.
-4. Use kebab-case filenames; actionable body with concrete ❌/✅ examples when useful.
-5. Run the skill's validation checklist before finishing.
+## Required frontmatter
 
-Do not duplicate User Rules from Cursor settings into project rules.
+```yaml
+---
+description: One line for the rule picker
+globs: **/*.ts          # when file-scoped
+alwaysApply: false      # true = every chat
+---
+```
+
+| Field | Notes |
+|-------|-------|
+| `description` | Required, specific |
+| `alwaysApply` | `true` = omit `globs` |
+| `globs` | Required when `alwaysApply: false` |
+
+Filename: kebab-case, e.g. `typescript-logging.mdc`.
+
+## Body style
+
+- **One concern per file** — split if over ~50 lines or multiple stacks
+- **Actionable** bullets — not vague "write clean code"
+- **❌ BAD / ✅ GOOD** snippets when patterns matter
+- Project-specific facts only
+- Under **500 lines** hard cap
+
+## Workflow
+
+1. Clarify purpose, scope (`alwaysApply` vs `globs`)
+2. Draft frontmatter + title + sections
+3. Run validation checklist
+4. Write `.cursor/rules/<name>.mdc`
+
+## Validation checklist
+
+- [ ] Valid YAML frontmatter
+- [ ] `description` matches body
+- [ ] Single concern
+- [ ] No secrets in examples
+
+## Do not
+
+- Duplicate User Rules from Cursor settings into project rules
+- Put slash-command authoring here — use **command-author** for `.cursor/commands/`
