@@ -1,0 +1,17 @@
+---
+description: When editing or creating .mdc rule files, follow the rule-writer skill workflow
+globs: .cursor/rules/**/*.mdc
+alwaysApply: false
+---
+
+# Rule file authoring
+
+When creating or editing files in `.cursor/rules/`:
+
+1. Apply the **write-cursor-rules** skill (`.cursor/skills/write-cursor-rules/` or `~/.cursor/skills/write-cursor-rules/`).
+2. Keep one concern per `.mdc` file; target under ~50 lines.
+3. Frontmatter must include `description` and `alwaysApply`; add `globs` when not always-on.
+4. Use kebab-case filenames; actionable body with concrete ❌/✅ examples when useful.
+5. Run the skill's validation checklist before finishing.
+
+Do not duplicate User Rules from Cursor settings into project rules.

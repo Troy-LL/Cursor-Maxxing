@@ -1,0 +1,14 @@
+---
+description: When editing slash commands, follow write-cursor-commands skill conventions
+globs: .cursor/commands/**/*.md
+alwaysApply: false
+---
+
+# Slash command authoring
+
+When creating or editing `.cursor/commands/*.md`:
+
+1. Use **write-cursor-commands** skill.
+2. Filename = `/command` name (kebab-case, no README.md here).
+3. Structure: `#` title, imperative **Steps**, clear **Output**.
+4. Update `.cursor/docs/USER-MANUAL.md` command table for new project commands.
