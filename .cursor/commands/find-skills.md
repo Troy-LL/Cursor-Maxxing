@@ -103,7 +103,7 @@ Say so honestly. Offer:
 
 1. Help the task directly without a skill
 2. `npx skills init <name>` if they do this often
-3. `/write-command` or **write-cursor-rules** for a project-local rule/skill
+3. **`/get-cursor-rules`** or **get-cursor-rules** skill for project rules
 
 ## Phase 6 — Wait for my decision
 

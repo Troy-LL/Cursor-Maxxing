@@ -22,7 +22,7 @@ npx cursor-directory rules add https://cursor.directory/<slug>
 | Browse | [cursor.directory](https://cursor.directory/) → Rules |
 | By topic | [Rules → API](https://cursor.directory/rules/api), React, TypeScript, etc. |
 | Web search | `site:cursor.directory nextjs` |
-| Chat | `/find-rules` or `/write-rule` |
+| Chat | `/get-cursor-rules` |
 
 ## After install
 
@@ -35,7 +35,7 @@ npx cursor-directory rules add https://cursor.directory/<slug>
 
 | Command | Role |
 |---------|------|
-| `/write-rule` | Search directory + install + custom author |
+| `/get-cursor-rules` | Search directory + install + custom author |
 
 For quick local rule edits without directory search, use Cursor **`/rules`**.
 

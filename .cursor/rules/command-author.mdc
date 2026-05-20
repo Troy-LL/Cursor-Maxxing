@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Slash command authoring
 
-Applies when creating or editing `.cursor/commands/*.md`. For templates, see **write-cursor-commands** skill (`.cursor/skills/write-cursor-commands/`).
+Applies when creating or editing `.cursor/commands/*.md`. Prefer Cursor **`/commands`** to create commands; this rule applies when editing files here.
 
 ## Locations
 
@@ -38,7 +38,7 @@ Optional sections: Context, Constraints, Examples. No YAML frontmatter in comman
 - **Imperative** steps — "Read X", "Write Y"
 - **One workflow per file** — split unrelated flows
 - **Explicit output** — files, format, or when to stop and ask
-- **Reference skills** for heavy playbooks (e.g. **write-cursor-rules**)
+- **Reference skills** for heavy playbooks (e.g. **get-cursor-rules**)
 - **Under ~80 lines** — use a skill if longer
 
 ## Workflow

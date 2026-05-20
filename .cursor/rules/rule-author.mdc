@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Rule file authoring
 
-Applies when creating or editing `.cursor/rules/*.mdc`. For templates, see **write-cursor-rules** skill (`.cursor/skills/write-cursor-rules/`).
+Applies when creating or editing `.cursor/rules/*.mdc`. For templates, see **get-cursor-rules** skill (`.cursor/skills/get-cursor-rules/`).
 
 ## Required frontmatter
 

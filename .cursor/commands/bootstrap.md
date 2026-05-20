@@ -56,7 +56,7 @@ Output:
    - Fill `docs/SPEC.md` first
    - `@SPEC.md` / `@ARCHITECTURE.md` when prompting
    - `@clean-coder` or project rules when ready (not part of bootstrap)
-   - `/find-skills` or `/write-rule` only if I ask
+   - `/find-skills` or `/get-cursor-rules` only if I ask
 
 ## Principles
 

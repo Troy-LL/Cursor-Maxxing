@@ -35,42 +35,30 @@ Toolkit for rules, skills, and custom slash commands. Open this file or `@USER-M
 | **`/plan`** | Plan before coding |
 | **`/ask`** | Read-only exploration |
 
-Do not duplicate these with custom commands.
-
 ---
 
-## Custom commands (this repo)
+## Custom commands
 
 | Command | Purpose |
 |---------|---------|
-| `/write-rule` | [cursor.directory](https://cursor.directory/) search + `npx cursor-directory rules add` + custom author |
-| `/find-skills` | Profile repo, search [skills.sh](https://skills.sh/), recommend installs |
-| `/slop-review` | Uncommitted vs `main` — slop audit, commit or sub-refactor |
-| `/toolkit` | Inventory `.cursor/` in this repo |
-| `/bootstrap` | Empty starter tree: `docs/`, `.agents/`, `.cursor/{commands,rules,skills}` — no rule content |
-| `/pr-review` | Branch vs base — reviewer narrative (risks, test plan) |
+| `/get-cursor-rules` | [cursor.directory](https://cursor.directory/) search + install + custom author |
+| `/find-skills` | Profile repo, search [skills.sh](https://skills.sh/) |
+| `/slop-review` | Uncommitted vs `main` — slop audit |
+| `/bootstrap` | Starter tree: `docs/`, `.agents/`, empty `.cursor/` slots |
+| `/pr-review` | Branch vs base — reviewer narrative |
+| `/toolkit` | Inventory `.cursor/` (this meta repo) |
 
-Global copies: `~/.cursor/commands/` for `write-rule`, `find-skills`, `slop-review`, `bootstrap`, `pr-review` (no `/toolkit` globally).
+Global: `~/.cursor/commands/` for all except `/toolkit`.
 
 ---
 
 ## Rules (.mdc)
 
-```yaml
----
-description: Shown in rule picker
-globs: **/*.ts
-alwaysApply: false
----
-```
-
-**Directory first:**
-
 ```bash
 npx cursor-directory rules add <slug-or-url>
 ```
 
-Then tune `globs` / `alwaysApply`. Guide: [cursor-directory.md](cursor-directory.md). Skill: **write-cursor-rules**. Quick local edit: Cursor **`/rules`**.
+Skill: **get-cursor-rules**. Command: **`/get-cursor-rules`**. Guide: [cursor-directory.md](cursor-directory.md). Local edit: **`/rules`**.
 
 ### Meta rules
 
@@ -81,8 +69,7 @@ Then tune `globs` / `alwaysApply`. Guide: [cursor-directory.md](cursor-directory
 
 ### Opt-in: clean-coder
 
-Activate with **`@clean-coder`** or "use clean-coder" — not automatic.  
-`.cursor/rules/clean-coder/clean-coder.mdc` — 200 LOC cap, clean organization.
+**`@clean-coder`** — `.cursor/rules/clean-coder/clean-coder.mdc`
 
 ---
 
@@ -90,60 +77,30 @@ Activate with **`@clean-coder`** or "use clean-coder" — not automatic.
 
 | Skill | When |
 |-------|------|
-| `write-cursor-rules` | Rules + cursor.directory workflow |
-| `write-cursor-commands` | Reference when using native **`/commands`** to add commands |
+| `get-cursor-rules` | Fetch/install rules from cursor.directory; custom `.mdc` fallback |
 
 ---
 
-## Typical workflows
+## Workflows
 
-### Add a rule
+### Get rules
 
-1. **`/write-rule`** or "Using write-cursor-rules, add a rule for …"
-2. Or **`/rules`** for a quick local rule only
-3. Prefer `npx cursor-directory rules add` over writing from scratch
+1. **`/get-cursor-rules`** or "Using get-cursor-rules, …"
+2. Or **`/rules`** for a quick local-only rule
 
-### Add a slash command
+### New repo
 
-1. Cursor **`/commands`** (built-in)
-2. **command-author** rule applies when editing `.cursor/commands/*.md`
+1. **`/bootstrap`** → fill `docs/SPEC.md`
+2. **`/get-cursor-rules`** + **`/find-skills`** when ready
 
 ### Audit rules
 
-Ask in chat: "Audit `.cursor/rules` using write-cursor-rules" — or use **`/rules`** to review in UI.
-
-### Clean code mode
-
-**`@clean-coder`** on the files you're working on.
-
-### Bootstrap a new repo
-
-1. **`/bootstrap`** in the new project root
-2. Fill `docs/SPEC.md`, then `ARCHITECTURE.md` / `DESIGN.md`
-3. Prompt with `@SPEC.md`, `@ARCHITECTURE.md`
-4. Add rules/skills later via **`/write-rule`**, **`/find-skills`**, or Cursor **`/rules`**
-
-### Ship toolkit
-
-Commit `.cursor/`; copy `~/.cursor/skills/` and `~/.cursor/commands/` for global tools.
-
----
-
-## Rule vs command vs skill
-
-| Need | Use |
-|------|-----|
-| Passive agent behavior | **Rule** (`/rules` or directory install) |
-| One-shot workflow Cursor lacks | **Custom command** |
-| Long playbook | **Skill** |
-| Reference | **docs/** (this file) |
+Ask: "Audit `.cursor/rules` using get-cursor-rules" or use **`/rules`**.
 
 ---
 
 ## Troubleshooting
 
-**Custom command missing from `/` menu** — `.md` in `.cursor/commands/` or `~/.cursor/commands/`; reload window.
+**Custom command missing** — reload window; check `.cursor/commands/` or `~/.cursor/commands/`.
 
-**Rule not applying** — check `alwaysApply` and `globs`.
-
-**cursor.directory 429** — use `npx cursor-directory rules add`, not repeated raw API calls.
+**cursor.directory 429** — use `npx cursor-directory rules add`, not repeated API calls.
