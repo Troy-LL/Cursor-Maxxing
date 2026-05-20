@@ -45,10 +45,10 @@ No drive-by refactor offers unless I ask.
 ```markdown
 # Quick rule
 
-Use **write-cursor-rules** skill. Create one focused `.mdc` rule from my description in this message.
+Directory-first: search cursor.directory, then `npx cursor-directory rules add <slug>` or custom .mdc via **write-cursor-rules**.
 
 ## Output
-Path, frontmatter summary, and the rule body.
+Source (directory slug or custom path), frontmatter, next step.
 ```
 
 ---

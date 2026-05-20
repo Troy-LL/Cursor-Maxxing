@@ -61,9 +61,9 @@ Optional sections: Context, Constraints, Examples. No YAML frontmatter in comman
 
 | Pattern | When |
 |---------|------|
-| Command → skill | `/write-rule` points at **write-cursor-rules** |
-| Command only | Short one-shot prompt |
-| Rule + command | This rule sets standards; command runs the workflow |
+| Native `/commands` | Cursor built-in — prefer for new commands |
+| Command → skill | Heavy workflows reference a skill in the body |
+| Rule + command | This rule sets standards when editing command files |
 
 **Keep commands** for explicit `/` workflows. **Use skills** for long templates. Do not migrate to skills unless the user asks.
 

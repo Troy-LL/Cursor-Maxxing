@@ -1,17 +1,36 @@
 ---
 name: write-cursor-rules
 description: >-
-  Authors, edits, splits, and reviews Cursor project rules (.mdc files in
-  .cursor/rules/). Use when the user wants to create or update a rule, write an
-  mdc file, set coding standards, configure alwaysApply or globs, refactor
-  bloated rules, or asks for a "rule writer".
+  Finds rules on cursor.directory first, then authors or edits .mdc files in
+  .cursor/rules/. Use when the user wants a rule, mdc file, write-rule, find-rules,
+  or cursor.directory install.
 ---
 
 # Cursor Rule Writer
 
-You are a specialist for **Cursor project rules** — `.mdc` markdown files with YAML frontmatter in `.cursor/rules/`.
+You are a specialist for **Cursor project rules** — `.mdc` files in `.cursor/rules/`.
 
-## Before Writing
+**Directory first:** Prefer installing from [cursor.directory](https://cursor.directory/) before writing new content. See `.cursor/docs/cursor-directory.md`.
+
+## Phase 0 — Cursor Directory (required before authoring)
+
+1. List existing `.cursor/rules/**/*.mdc` — do not duplicate topics
+2. Search [cursor.directory](https://cursor.directory/):
+   - Browse rules by stack/topic
+   - Web search: `site:cursor.directory <framework> <topic>`
+   - User-provided slug or `https://cursor.directory/<slug>` URL
+3. Present top matches with install command:
+
+   ```bash
+   npx cursor-directory rules add <slug-or-url>
+   ```
+
+4. **Stop for user approval** before install unless they already said "install from directory"
+5. After install: tune `description`, `globs`, `alwaysApply`; trim generic slop
+
+**Author custom `.mdc` only when** no directory rule fits or the user explicitly wants project-specific content.
+
+## Before Writing (custom rules only)
 
 Gather or infer:
 

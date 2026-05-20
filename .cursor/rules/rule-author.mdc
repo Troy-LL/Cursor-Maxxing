@@ -34,12 +34,22 @@ Filename: kebab-case, e.g. `typescript-logging.mdc`.
 - Project-specific facts only
 - Under **500 lines** hard cap
 
-## Workflow
+## Cursor Directory first
+
+Before writing a new rule from scratch:
+
+1. Search [cursor.directory](https://cursor.directory/) for an existing rule
+2. Install with `npx cursor-directory rules add <slug-or-url>` when the user approves
+3. Tune frontmatter (`globs`, `alwaysApply`) in the downloaded `.mdc`
+4. Author locally only if no directory match — see `.cursor/docs/cursor-directory.md`
+
+## Workflow (custom author)
 
 1. Clarify purpose, scope (`alwaysApply` vs `globs`)
-2. Draft frontmatter + title + sections
-3. Run validation checklist
-4. Write `.cursor/rules/<name>.mdc`
+2. Confirm no suitable cursor.directory rule (or user rejected installs)
+3. Draft frontmatter + title + sections
+4. Run validation checklist
+5. Write `.cursor/rules/<name>.mdc`
 
 ## Validation checklist
 

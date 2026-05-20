@@ -15,4 +15,4 @@ Also note if I have global copies under `~/.cursor/commands/` or `~/.cursor/skil
 
 Markdown table per category: **name** | **path** | **one-line purpose**
 
-End with: "Run `/manual` for full docs" and suggest one missing command or rule if the toolkit looks sparse.
+End with: point to `.cursor/docs/USER-MANUAL.md` and native Cursor **`/rules`** / **`/commands`** where relevant.

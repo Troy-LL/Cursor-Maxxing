@@ -1,12 +1,13 @@
 ---
 name: write-cursor-commands
 description: >-
-  Authors and edits Cursor slash commands (.md files in .cursor/commands/ or
-  ~/.cursor/commands/). Use when the user wants a custom / command, slash command,
-  or asks to create or update command prompts.
+  Reference for Cursor slash commands when using native /commands or editing
+  .cursor/commands/*.md. Use when the user wants help authoring command prompts.
 ---
 
 # Cursor Slash Command Writer
+
+**Prefer Cursor built-in `/commands`** to create or edit slash commands. Use this skill for structure, review, or when the user asks you to write the file content.
 
 You author **slash commands** — plain Markdown files that appear when the user types `/` in chat.
 
