@@ -29,7 +29,7 @@ npx cursor-directory rules add https://cursor.directory/<slug>
 1. Open the new `.mdc`
 2. Set `globs` and `alwaysApply` for your repo
 3. Remove generic noise; keep one concern per file
-4. Opt-in packs stay in subfolders (e.g. `rules/clean-coder/`)
+4. Opt-in packs stay in subfolders (e.g. `rules/lean-coder/`)
 
 ## Command in this toolkit
 

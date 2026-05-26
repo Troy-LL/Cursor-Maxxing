@@ -44,7 +44,8 @@ Toolkit for rules, skills, and custom slash commands. Open this file or `@USER-M
 | `/get-cursor-rules` | [cursor.directory](https://cursor.directory/) search + install + custom author |
 | `/find-skills` | Profile repo, search [skills.sh](https://skills.sh/) |
 | `/slop-review` | Uncommitted vs `main` — slop audit |
-| `/bootstrap` | Starter tree: `docs/`, `.agents/`, empty `.cursor/` slots |
+| `/bootstrap` | Starter tree + **document-distillator** skill; optional spec → `docs/` |
+| `/clean` | Remove AI clutter (`.agents`, `.claude`, `.gemini`, empty `docs/`, optional `.cursor/`) before GitHub |
 | `/pr-review` | Branch vs base — reviewer narrative |
 | `/toolkit` | Inventory `.cursor/` (this meta repo) |
 
@@ -67,9 +68,9 @@ Skill: **get-cursor-rules**. Command: **`/get-cursor-rules`**. Guide: [cursor-di
 | `rule-author.mdc` | Editing `.cursor/rules/**/*.mdc` |
 | `command-author.mdc` | Editing `.cursor/commands/**/*.md` |
 
-### Opt-in: clean-coder
+### Opt-in: lean-coder
 
-**`@clean-coder`** — `.cursor/rules/clean-coder/clean-coder.mdc`
+**`@lean-coder`** — `.cursor/rules/lean-coder/lean-coder.mdc`
 
 ---
 
@@ -78,6 +79,7 @@ Skill: **get-cursor-rules**. Command: **`/get-cursor-rules`**. Guide: [cursor-di
 | Skill | When |
 |-------|------|
 | `get-cursor-rules` | Fetch/install rules from cursor.directory; custom `.mdc` fallback |
+| `document-distillator` | With `/bootstrap`: audit external spec → populate `docs/`, prune shells, delete source |
 
 ---
 
@@ -90,8 +92,10 @@ Skill: **get-cursor-rules**. Command: **`/get-cursor-rules`**. Guide: [cursor-di
 
 ### New repo
 
-1. **`/bootstrap`** → fill `docs/SPEC.md`
-2. **`/get-cursor-rules`** + **`/find-skills`** when ready
+1. **`/bootstrap`** → provide path to ideation spec (anywhere on disk)
+2. Approve distillation plan → populated `docs/`, unused shells + source spec removed (optional **K** to keep source)
+3. **`/get-cursor-rules`** + **`/find-skills`** when ready
+4. Before push to GitHub: **`/clean`** → approve plan → commit lean tree
 
 ### Audit rules
 

@@ -1,14 +1,14 @@
 ---
 description: >-
-  Opt-in only. Clean, organized code + 200 LOC cap per component/module file.
-  Apply ONLY when the user @mentions clean-coder or says "use clean-coder".
+  Opt-in only. Lean, organized code + 200 LOC cap per component/module file.
+  Apply ONLY when the user @mentions lean-coder or says "use lean-coder".
   Never auto-apply from context alone.
 alwaysApply: false
 ---
 
-# Clean coder (opt-in)
+# Lean coder (opt-in)
 
-**Activation:** User must invoke via `@clean-coder` or **"use clean-coder"**. Do not infer this rule from unrelated tasks.
+**Activation:** User must invoke via `@lean-coder` or **"use lean-coder"**. Do not infer this rule from unrelated tasks.
 
 **Priority:** Clarity and organization over cleverness. Smallest correct solution.
 
@@ -34,7 +34,7 @@ Applies to each **single-responsibility file**: React/Vue/Svelte component, page
 
 ---
 
-## Clean code (default stance)
+## Lean code (default stance)
 
 ### Structure
 

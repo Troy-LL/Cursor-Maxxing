@@ -6,7 +6,7 @@ Toolkit for Cursor — custom commands only where the IDE falls short.
 
 **[.cursor/docs/USER-MANUAL.md](.cursor/docs/USER-MANUAL.md)** — or `@USER-MANUAL.md`
 
-**New repo:** **`/bootstrap`** → fill `docs/SPEC.md` → **`/get-cursor-rules`** / **`/find-skills`** when ready.
+**New repo:** **`/bootstrap`** (distill your spec into `docs/`) → work locally → **`/clean`** before GitHub → **`/get-cursor-rules`** / **`/find-skills`** when ready.
 
 ## Built into Cursor
 
@@ -22,17 +22,21 @@ Toolkit for Cursor — custom commands only where the IDE falls short.
 | `/get-cursor-rules` | [cursor.directory](https://cursor.directory/) + install |
 | `/find-skills` | [skills.sh](https://skills.sh/) |
 | `/slop-review` | Pre-commit slop audit |
-| `/bootstrap` | Empty `docs/`, `.agents/`, `.cursor/` scaffold |
+| `/bootstrap` | `docs/` scaffold + spec distillation via **document-distillator** |
+| `/clean` | Remove AI clutter before publishing to GitHub |
 | `/pr-review` | PR review vs default branch |
 | `/toolkit` | Inventory this repo |
 
-## Skill
+## Skills
 
-**`get-cursor-rules`** — directory-first rules (`.cursor/skills/get-cursor-rules/`)
+| Skill | Role |
+|-------|------|
+| **`get-cursor-rules`** | Directory-first rules (`.cursor/skills/get-cursor-rules/`) |
+| **`document-distillator`** | Auditor: external spec → minimal `docs/`, prune bloat (`.cursor/skills/document-distillator/`) |
 
 ## Opt-in rules
 
-**`@clean-coder`** — 200 LOC cap, clean code
+**`@lean-coder`** — 200 LOC cap, lean organized code
 
 ## Install rules from directory
 
