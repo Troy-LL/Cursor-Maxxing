@@ -35,6 +35,7 @@ If the path is missing, unreadable, or empty: **stop** and ask once. Do not inve
 | `API.md` | REST/GraphQL/RPC, routes, contracts, payloads, auth between services |
 | `TESTING.md` | Test strategy, QA, coverage targets, e2e/unit plans |
 | `DEPLOYMENT.md` | Hosting, CI/CD, infra, envs, release, observability ops |
+| `DEVELOPMENT.md` | **Always keep** — fixed bootstrap template (workflow, etiquette, commands); never DELETE unless user asks |
 
 **Rules**
 
@@ -82,7 +83,7 @@ For each **POPULATE** doc:
 ## Phase 4 — Prune
 
 1. **Delete** every scaffold file marked **DELETE** (empty or unused).
-2. Rewrite `docs/README.md` as a short index: **only files that remain**, one line each.
+2. Rewrite `docs/README.md` as a short index: **only files that remain**, one line each — always include `DEVELOPMENT.md` if it exists.
 3. **Delete the source spec file** if user chose **Y** (not **K**).
 4. Do not delete `docs/` itself if at least one file remains.
 

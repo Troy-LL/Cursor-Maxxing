@@ -36,12 +36,7 @@ Filename: kebab-case, e.g. `typescript-logging.mdc`.
 
 ## Cursor Directory first
 
-Before writing a new rule from scratch:
-
-1. Search [cursor.directory](https://cursor.directory/) for an existing rule
-2. Install with `npx cursor-directory rules add <slug-or-url>` when the user approves
-3. Tune frontmatter (`globs`, `alwaysApply`) in the downloaded `.mdc`
-4. Author locally only if no directory match — see `.cursor/docs/cursor-directory.md`
+Before authoring from scratch, fetch/install from cursor.directory via the **get-cursor-rules** skill. Only write custom when nothing fits.
 
 ## Workflow (custom author)
 

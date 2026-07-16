@@ -18,6 +18,7 @@ Create folders and doc shells first — **no** rule bodies, **no** cursor.direct
 
 docs/
   README.md              # index: what each doc is for
+  DEVELOPMENT.md         # copy from bootstrap/DEVELOPMENT.md (this toolkit)
   SPEC.md                # empty
   DESIGN.md              # empty
   ARCHITECTURE.md        # empty
@@ -41,6 +42,7 @@ docs/
 
 | File | Content |
 |------|---------|
+| `docs/DEVELOPMENT.md` | **Copy** from this toolkit's `bootstrap/DEVELOPMENT.md` — skip only if path exists and is non-empty |
 | `docs/SPEC.md` etc. | **Empty** (0 bytes) or single newline — no boilerplate paragraphs |
 | `docs/README.md` | Short index table only: file → purpose (one line each) |
 | `.agents/README.md` | State: human + agent shared context; link to `docs/` |
@@ -70,7 +72,7 @@ Output:
 2. Skipped (already existed)
 3. Distillation summary (if run): populated docs, deleted shells, source spec fate
 4. Suggested next steps:
-   - `@docs/SPEC.md` and other populated docs when prompting
+   - `@docs/DEVELOPMENT.md` for workflow alignment; `@docs/SPEC.md` and other populated docs when prompting
    - `@lean-coder` or project rules when ready (not part of bootstrap)
    - `/find-skills` or `/get-cursor-rules` only if I ask
    - Before GitHub: **`/clean`** to remove local-only scaffold (keeps filled `docs/`)
