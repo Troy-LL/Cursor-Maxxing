@@ -1,30 +1,22 @@
 # Bootstrap project structure
 
-Scaffold a **new or empty repo** for AI-assisted work, then **optionally distill** a user-provided ideation spec into the right `docs/` files.
+Scaffold a **new or empty repo** for AI-assisted work, then **optionally distill** a user-provided ideation spec onto the allowlist. Create slots first. No rule bodies, no cursor.directory installs, no extra skills unless asked.
 
-Create folders and doc shells first — **no** rule bodies, **no** cursor.directory installs, **no** skills content in those slots.
+Do **not** create `docs/SPEC.md`, `docs/API.md`, `docs/TESTING.md`, `docs/DEPLOYMENT.md`, `docs/DEVELOPMENT.md`, or `docs/README.md`. Do **not** pre-create `docs/` shells. Distillation decides which allowlisted docs exist.
 
 ## Before creating
 
-1. `git status` or list root — note what already exists
-2. **Do not overwrite** non-empty files; skip and report conflicts
-3. If `.cursor/`, `docs/`, or `.agents/` already exist, only add **missing** paths
+1. `git status` or list root. Note what already exists.
+2. **Do not overwrite** non-empty files; skip and report conflicts.
+3. If `.cursor/`, `docs/`, `.agents/`, or `AGENTS.md` already exist, only add **missing** paths.
 
 ## Create this tree
 
 ```
-.agents/
-  README.md              # explains agent context folder (short, 5 lines max)
+AGENTS.md                # the only map (stub from document-distillator)
 
-docs/
-  README.md              # index: what each doc is for
-  DEVELOPMENT.md         # copy from bootstrap/DEVELOPMENT.md (this toolkit)
-  SPEC.md                # empty
-  DESIGN.md              # empty
-  ARCHITECTURE.md        # empty
-  API.md                 # empty
-  TESTING.md             # empty
-  DEPLOYMENT.md          # empty
+.agents/
+  README.md              # short; points at AGENTS.md
 
 .cursor/
   commands/
@@ -33,36 +25,36 @@ docs/
     .gitkeep
   skills/
     document-distillator/
-      SKILL.md           # Auditor: spec → docs/ (see skill body)
+      SKILL.md
   docs/
-    README.md            # points to repo docs/ and native /rules, /commands
+    README.md            # tooling slots; points at AGENTS.md
 ```
+
+Create **nothing** under `docs/` until distillation. Do not copy a per-project `DEVELOPMENT.md`.
 
 ## File content rules
 
 | File | Content |
 |------|---------|
-| `docs/DEVELOPMENT.md` | **Copy** from this toolkit's `bootstrap/DEVELOPMENT.md` — skip only if path exists and is non-empty |
-| `docs/SPEC.md` etc. | **Empty** (0 bytes) or single newline — no boilerplate paragraphs |
-| `docs/README.md` | Short index table only: file → purpose (one line each) |
-| `.agents/README.md` | State: human + agent shared context; link to `docs/` |
+| `AGENTS.md` | If missing or empty: write the **Map stub** from `.cursor/skills/document-distillator/SKILL.md`. Thin. Load cap + pointers. No architecture pasted in. |
+| `.agents/README.md` | Human + agent shared notes. Map is `AGENTS.md`. Product is `README.md`. `/clean` removes this folder. 5 lines max. |
 | `.cursor/**/.gitkeep` | Empty file |
-| `.cursor/docs/README.md` | 5–10 lines: `.cursor/commands`, `rules`, `skills`; use Cursor `/rules` and `/commands`; project truth lives in `docs/` |
+| `.cursor/docs/README.md` | 5–10 lines: `commands`, `rules`, `skills`; use Cursor `/rules` and `/commands`; map is `AGENTS.md`; do not add `docs/README.md` |
 
 **Do not** add `.mdc` rules, other `SKILL.md` files, or custom slash commands unless I explicitly ask in this message.
 
-**Include** `.cursor/skills/document-distillator/SKILL.md` — copy from this toolkit’s skill if bootstrapping elsewhere; skip only if that path already exists and is non-empty.
+**Include** `.cursor/skills/document-distillator/SKILL.md`. Copy from this toolkit’s skill if bootstrapping elsewhere; skip only if that path already exists and is non-empty.
 
 ## Phase 2 — Document distillation (recommended)
 
 After scaffold, run the **document-distillator** skill (Auditor).
 
-1. Ask for the **source spec path** if I did not provide it (file can be **outside** this repo or anywhere on disk — not part of the bootstrap tree).
+1. Ask for the **source spec path** if I did not provide it (file can be **outside** this repo or anywhere on disk).
 2. Read `.cursor/skills/document-distillator/SKILL.md` and follow it exactly.
-3. Audit which `docs/*.md` shells are needed for my plan; **populate** those from the spec.
-4. **Delete** unused empty scaffold docs and **delete the source spec** after approval (default **Y**), unless I chose **K** to keep the source.
+3. Map spec content onto the **allowlist** only. Create a docs file only when that job exists.
+4. **Delete** unused empty shells (including leftover SPEC/API/TESTING/DEPLOYMENT/DEVELOPMENT/`docs/README.md`) and **delete the source spec** after approval (default **Y**), unless I chose **K** to keep the source.
 
-Do not skip distillation silently — if I gave no spec path, prompt once: *"Path to your ideation spec? (or `skip` to leave empty shells)"*.
+Do not skip distillation silently. If I gave no spec path, prompt once: *"Path to your ideation spec? (or `skip` to leave AGENTS.md only)"*.
 
 ## After scaffold (+ distillation if run)
 
@@ -70,15 +62,15 @@ Output:
 
 1. Tree created (paths)
 2. Skipped (already existed)
-3. Distillation summary (if run): populated docs, deleted shells, source spec fate
+3. Distillation summary (if run): populated files, deleted shells, source spec fate
 4. Suggested next steps:
-   - `@docs/DEVELOPMENT.md` for workflow alignment; `@docs/SPEC.md` and other populated docs when prompting
+   - `@AGENTS.md` then allowlisted files the job needs (`README.md`, `docs/architecture.md`, …)
    - `@lean-coder` or project rules when ready (not part of bootstrap)
    - `/find-skills` or `/get-cursor-rules` only if I ask
-   - Before GitHub: **`/clean`** to remove local-only scaffold (keeps filled `docs/`)
+   - Before GitHub: **`/clean`** (keeps `AGENTS.md` and filled allowlisted docs)
 
 ## Principles
 
-- Structure first — policy and prose come from **my** spec via distillation, not generated slop
-- Repo docs (`docs/`) = product truth; `.cursor/` = tooling slots only
-- Fewer, fuller docs beat a full set of empty shells
+- Structure first. Policy and prose come from **my** spec via distillation, not generated slop.
+- `AGENTS.md` is the only map. `README.md` is the product. `.cursor/` is tooling slots.
+- No second map (`docs/README.md`). Fewer, fuller docs beat empty shells.
