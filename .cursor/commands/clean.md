@@ -1,6 +1,6 @@
 # Clean repo for GitHub (remove AI clutter)
 
-Strip **local-only** AI scaffolding so the repo looks lean on GitHub. Inverse of **`/bootstrap`** — deletes placeholders and agent folders, not application source.
+Strip **local-only** AI scaffolding so the repo looks lean on GitHub. Inverse of **`/bootstrap`**. Deletes placeholders and agent folders, not application source.
 
 ## Phase 1 — Inventory (no deletes yet)
 
@@ -18,22 +18,30 @@ Scan repo root and report what exists:
 | `.copilot/` | Copilot workspace files |
 | `.windsurf/` | Windsurf |
 | `.codex/` | Codex |
-| `AGENTS.md` | Only if **empty** or bootstrap placeholder (≤5 lines, no product spec) |
 
-### Tier B — `docs/` scaffold (empty placeholders only)
+### Tier B — empty doc shells only
 
-From bootstrap — delete **only** if file is empty or whitespace-only:
+Delete **only** if the file is empty or whitespace-only (or `docs/README.md` that is only a bootstrap index table):
 
-- `docs/SPEC.md`, `DESIGN.md`, `ARCHITECTURE.md`, `API.md`, `TESTING.md`, `DEPLOYMENT.md`
-- `docs/README.md` if only the bootstrap index table
+Allowlist leftovers:
 
-**Keep** any `docs/` file with real product content (non-empty paragraphs, diagrams, API specs).
+- `docs/architecture.md`, `docs/design.md`, `docs/eval.md`
+- `docs/decisions/*` empty ADR stubs
+- `AGENTS.md` only if empty or whitespace-only
+
+Old bootstrap names (empty only):
+
+- `docs/SPEC.md`, `DESIGN.md`, `ARCHITECTURE.md`, `API.md`, `TESTING.md`, `DEPLOYMENT.md`, `DEVELOPMENT.md`
+- `docs/README.md`
+
+**Keep** `AGENTS.md` when it has a load rule or pointers. It is the map, not clutter.
+**Keep** any allowlisted `docs/` file with real product content.
 
 ### Tier C — `.cursor/` (ask every time)
 
 | Subpath | Default on publish-clean |
 |---------|-------------------------|
-| `.cursor/commands/` | Remove (slash prompts — local workflow) |
+| `.cursor/commands/` | Remove (slash prompts, local workflow) |
 | `.cursor/skills/` | Remove |
 | `.cursor/rules/` except user may want to **keep** rules for contributors | Ask |
 | `.cursor/docs/` | Remove (toolkit manuals) |
@@ -45,9 +53,10 @@ If `.cursor/` is the **main purpose** of this repo (e.g. Cursor Maxxing toolkit)
 - `src/`, `app/`, `lib/`, `packages/`, `tests/`
 - `package.json`, lockfiles, `pyproject.toml`, `go.mod`, etc.
 - Root `README.md` with real project description
+- `AGENTS.md` with content (load rule, pointers)
 - `LICENSE`, `.github/`, CI configs
 - `.env.example`, `docker-compose*`
-- Filled `docs/` (Tier B exception above)
+- Filled allowlisted `docs/` (Tier B exception above)
 
 ## Phase 2 — Report
 
@@ -56,7 +65,8 @@ If `.cursor/` is the **main purpose** of this repo (e.g. Cursor Maxxing toolkit)
 | Path | Tier | Size / note | Action |
 |------|------|-------------|--------|
 | .agents/ | A | … | DELETE |
-| docs/SPEC.md | B | empty | DELETE |
+| docs/architecture.md | B | empty | DELETE |
+| AGENTS.md | — | has load rule | KEEP |
 | .cursor/ | C | … | SKIP (unless include-cursor) |
 
 **Estimated:** N files, M folders
@@ -85,7 +95,7 @@ Parse my reply for: `include-cursor`, `keep-rules`, `keep-docs`, or paths to **n
 2. Delete approved paths (folders recursive)
 3. Remove empty parent dirs
 4. If `docs/` is empty after clean, remove `docs/` folder
-5. `git status` after — list deleted paths
+5. `git status` after. List deleted paths.
 
 ## Phase 5 — Git hygiene (suggest only)
 
@@ -98,11 +108,11 @@ If `.gitignore` exists, suggest lines to add so clutter does not return:
 .aider*
 ```
 
-Offer to append — **do not** edit `.gitignore` unless I say yes.
+Offer to append. **Do not** edit `.gitignore` unless I say yes.
 
 ## Principles
 
-- **Publish-ready** — what remains should look like a normal app/library repo
-- **Reversible** — remind me deletes are local until commit; use git to restore if needed
-- **No source damage** — when unsure, skip and ask
-- Pairing: use **`/bootstrap`** again to recreate scaffold locally
+- **Publish-ready.** What remains should look like a normal app/library repo.
+- **Reversible.** Remind me deletes are local until commit; use git to restore if needed.
+- **No source damage.** When unsure, skip and ask.
+- Pairing: use **`/bootstrap`** again to recreate local slots (`AGENTS.md` is kept if it had content).
