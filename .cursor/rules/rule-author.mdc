@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Rule file authoring
 
-Applies when creating or editing `.cursor/rules/*.mdc`. For templates, see **get-cursor-rules** skill (`.cursor/skills/get-cursor-rules/`).
+Applies when creating or editing `.cursor/rules/*.mdc`. Prefer Cursor **`/rules`** or `npx cursor-directory rules add` before writing a custom file.
 
 ## Required frontmatter
 
@@ -36,7 +36,7 @@ Filename: kebab-case, e.g. `typescript-logging.mdc`.
 
 ## Cursor Directory first
 
-Before authoring from scratch, fetch/install from cursor.directory via the **get-cursor-rules** skill. Only write custom when nothing fits.
+Before authoring from scratch, install from [cursor.directory](https://cursor.directory/) with `npx cursor-directory rules add <slug-or-url>`. Only write custom when nothing fits.
 
 ## Workflow (custom author)
 

@@ -8,7 +8,7 @@ Review the **branch vs default branch** for human reviewers. Not a slop-only pas
 2. `git log <default>..HEAD --oneline`
 3. `git diff <default>...HEAD --stat`
 4. `git diff <default>...HEAD` (read key hunks; sample large diffs by area)
-5. Read `AGENTS.md` if present, then `README.md`, `docs/architecture.md`, `docs/design.md` if they exist (that order). Do not glob `docs/decisions/`. Cite one ADR path if the diff needs it.
+5. Read `AGENTS.md` if present, then `README.md`, `docs/architecture.md`, `docs/design.md` if they exist (that order). Do not glob `docs/decisions/`. Cite one ADR path if the diff needs it. Missing `docs/api.md` / `SPEC.md` is correct — review the owner, not a twin.
 
 ## Phase 2 — Review lens
 
