@@ -1,0 +1,17 @@
+{
+  "name": "cursormax",
+  "owner": {
+    "name": "Troy"
+  },
+  "metadata": {
+    "description": "Cursor-native workflow pack. Gap-or-out. First attempt accepted, net of tax. Stack-agnostic; adopt battle-tested skills, do not rewrite them. Not a Claude Code pack.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "cursormax",
+      "source": ".",
+      "description": "Cursor-native workflow pack. Gap-or-out. First attempt accepted, net of tax. Stack-agnostic; adopt battle-tested skills, do not rewrite them. Not a Claude Code pack."
+    }
+  ]
+}

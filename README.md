@@ -6,7 +6,7 @@ A few on-demand skills, a few knobs, a few short priors. Nothing that wraps some
 
 ## Start here
 
-1. Install the plugin — Cursor Settings → Plugins → add GitHub `Troy-LL/Cursor-Maxxing`. Or open this repo in Cursor and the project `.cursor/` loads with no marketplace step.
+1. Install the plugin — Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Or open this repo in Cursor and the project `.cursor/` loads with no marketplace step.
 2. Type **`/cursormax`**.
 3. Type anything else from the table below when you need a specific workflow.
 
@@ -17,7 +17,7 @@ A few on-demand skills, a few knobs, a few short priors. Nothing that wraps some
 | `/cursormax` alone | Orients the agent to this pack. Fine. No job required. |
 | `/cursormax` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
 
-Manifest: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Publish with [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
+Catalog: [`.cursor-plugin/marketplace.json`](.cursor-plugin/marketplace.json) (what Customize import reads). Plugin: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Publish with [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
 
 Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand unless you cannot install plugins.
 
