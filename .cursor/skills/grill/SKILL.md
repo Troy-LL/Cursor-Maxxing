@@ -22,8 +22,8 @@ Map the work as a design tree. The **frontier** is every decision whose prerequi
 
 Each round:
 
-1. Ask the whole frontier. Number each question. Give your recommended answer.
-2. Wait. Do not guess unanswered branches.
+1. Ask the frontier. Prefer at most five questions this round. Number each. Give your recommended answer.
+2. Wait. Do not guess unanswered branches. "You figure it out" is not a skip.
 3. Recompute the frontier from their answers. Repeat.
 
 Format:
@@ -36,4 +36,4 @@ Recommended: <your answer>
 
 Finding facts is your job. Do not ask the user anything you can look up. Dispatch a sub-agent for those lookups; ask the rest of the frontier now.
 
-The session is done when the frontier is empty and they confirm. Then stop, unless the docs flag applies.
+The session is done when the frontier is empty and they confirm. Then name the next `/` (`/sdd`, `/sdd-eng`, or stay and implement). Stop, unless the docs flag applies.

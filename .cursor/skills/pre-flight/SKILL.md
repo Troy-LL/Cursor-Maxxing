@@ -31,13 +31,15 @@ Emit a concise scorecard:
 
 | # | Check | Status | Action Required |
 |---|-------|--------|-----------------|
-| 1 | Production Build | PASS / FAIL | <fix if fail> |
-| 2 | Secret & Env Scan | PASS / FAIL | <fix if fail> |
-| 3 | Dependency Sync | PASS / FAIL | <fix if fail> |
-| 4 | Anti-Stub Check | PASS / FAIL | <fix if fail> |
-| 5 | Test Suite | PASS / FAIL | <fix if fail> |
+| 1 | Production Build | PASS / FAIL / N/A | <fix if fail> |
+| 2 | Secret & Env Scan | PASS / FAIL / N/A | <fix if fail> |
+| 3 | Dependency Sync | PASS / FAIL / N/A | <fix if fail> |
+| 4 | Anti-Stub Check | PASS / FAIL / N/A | <fix if fail> |
+| 5 | Test Suite | PASS / FAIL / N/A | <fix if fail> |
 ```
+
+N/A is not PASS. If a check has no runner, no env, or no suite, write N/A.
 
 ## Done
 
-Pre-flight is done when all checks pass with clean exit codes or have explicit documented overrides confirmed by the user.
+Pre-flight is done when every applicable check is PASS, and every N/A is named. Do not say ship if the only statuses are N/A.

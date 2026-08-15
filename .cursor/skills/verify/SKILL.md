@@ -37,6 +37,8 @@ If any gate fails:
 - Re-run the failed gate (max 2 repair cycles).
 - If still failing, present the exact root cause and error output to the user.
 
+If a gate has nothing to run, mark it **N/A**. N/A is not a pass. Do not yield "green" if every applicable gate was N/A and you ran no command and no `ReadLints`.
+
 ## Done
 
-Verification is done when all 4 gates pass with clean exit codes and zero remaining diagnostics.
+Verification is done when every applicable gate passed with a real run, and every other gate is marked N/A.
