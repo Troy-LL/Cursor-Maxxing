@@ -13,7 +13,9 @@ Portable constitution. Use this when the guidebook repo files are not in the wor
 
 | Kind | What |
 |------|------|
-| `/cursormax` | Orient to this pack and offer the Cursor native for this job |
+| `/cursormax` | Orient, or intake a pasted job (messy/meta OK) and offer the Cursor native |
+| `/sdd` | Product docs (adopted from troysdd) |
+| `/sdd-eng` | Behavior change against the map (adopted from troysdd) |
 | `/grill` | Frontier interview. `/grill docs` then `/sdd` |
 | `/deepen` | List deepening candidates, wait, then grill the pick |
 | `thermonuclear` | In-session adversarial review & loop auditor |
@@ -29,7 +31,7 @@ Portable constitution. Use this when the guidebook repo files are not in the wor
 | `tdd` | Red-green. Skip only if you say why |
 | `@blast-radius` | Said → cited → walked → ran |
 
-Product docs: `/sdd`. Implementation: `/sdd-eng`. Those live in the troysdd plugin. Do not copy them into this pack.
+Product docs: `/sdd`. Implementation: `/sdd-eng`. Both ship here from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd). Do not rewrite them in this tree.
 
 ## Cursor surface
 

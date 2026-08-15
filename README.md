@@ -7,8 +7,15 @@ A few on-demand skills, a few knobs, a few short priors. Nothing that wraps some
 ## Start here
 
 1. Install the plugin — Cursor Settings → Plugins → add GitHub `Troy-LL/Cursor-Maxxing`. Or open this repo in Cursor and the project `.cursor/` loads with no marketplace step.
-2. Type `/cursormax`. It orients to the pack and names the Cursor native for the job in front of you.
-3. Type the thing you need from the table below.
+2. Type **`/cursormax`**.
+3. Type anything else from the table below when you need a specific workflow.
+
+### `/cursormax` two ways
+
+| You type | What happens |
+|----------|--------------|
+| `/cursormax` alone | Orients the agent to this pack. Fine. No job required. |
+| `/cursormax` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
 
 Manifest: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Publish with [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
 
@@ -18,7 +25,9 @@ Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand un
 
 | Type this | What it does |
 |-----------|--------------|
-| `/cursormax` | Orient to the pack, get the Cursor native for this job |
+| `/cursormax` | Alone: orient. With a paste: intake the job and name the Cursor native |
+| `/sdd` | Product docs: README, AGENTS.md, architecture, design, eval, one ADR |
+| `/sdd-eng` | Implement a behavior change against that map |
 | `/grill` | Frontier interview. `/grill docs` then `/sdd` |
 | `/deepen` | List deepening candidates, wait, grill the pick |
 | `/thermonuclear` | In-session adversarial review and loop auditor |
@@ -28,7 +37,7 @@ Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand un
 | `/voice` | `plain` \| `ste` \| `off` |
 | `/keep`, `/after-compact` | Park a keep-alive, rehydrate after a compact |
 
-Product docs are **`/sdd`**. Implementation is **`/sdd-eng`**. Both live in the troysdd plugin; this repo does not copy them.
+Product docs are **`/sdd`**. Implementation is **`/sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
 
 Also on board: `write-skill` (author a skill — model-invoked), and the priors in `.cursor/rules/` — `yagni-bias` is always on at ~40 words, while `@yagni`, `tdd`, and `@blast-radius` are opt-in.
 
@@ -68,7 +77,7 @@ If it assumes your stack, it belongs in your project rules instead.
 | Plan / `/autoplan` wrappers | Plan mode |
 | PR babysit loops | `/babysit` |
 | Stack skills, framework guides, service integrations | App-specific `.cursor/rules/`, `cursor-directory` |
-| Rewrites of battle-tested community skills | Adopt verbatim with upstream attribution ([003](docs/decisions/003-workflow-not-stack.md)) |
+| Rewrites of battle-tested community skills | Adopt verbatim with upstream attribution ([003](docs/decisions/003-workflow-not-stack.md)); `/sdd` is the troysdd adopt |
 
 </details>
 

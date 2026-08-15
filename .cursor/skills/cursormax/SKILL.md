@@ -1,16 +1,17 @@
 ---
 name: cursormax
 description: >-
-  Orients to the Cursor Maxxing pack and the Cursor natives this job should
-  use. Use when the user says cursormax, /cursormax, asks what this pack
-  ships, or asks what to type next in Cursor. Use when doing /sdd or
-  /sdd-eng with this pack installed so product docs stay on the map. Do not
-  use for a one-line edit, rename, or format pass.
+  Orients to the Cursor Maxxing pack and runs a job that arrives after
+  /cursormax — including messy, meta, or vague prompts. Use when the user
+  says cursormax, /cursormax, Cursor Max, asks what this pack ships, or
+  asks what to type next. Use when doing /sdd or /sdd-eng with this pack
+  installed so product docs stay on the map. Do not use for a one-line
+  edit, rename, or format pass that never invoked this pack.
 ---
 
 # Cursor Maxxing
 
-This pack is a small Cursor-native kit. It is not a Claude Code encyclopedia.
+This pack is a small Cursor-native kit. It is not a Claude Code encyclopedia and not a pstack / poteto-mode orchestra.
 
 ## Load
 
@@ -20,7 +21,22 @@ This pack is a small Cursor-native kit. It is not a Claude Code encyclopedia.
 
 Do not dump those files into the reply. Follow them.
 
-## Offer
+## Entry
+
+Most people type `/cursormax` (or "Cursor Max") and paste a job — often a meta-prompt, a wish list, or noise. That paste **is** the job. Do not ask "what is the job?" when they already gave one. Do not dump the catalog.
+
+| What they sent | Do this |
+|----------------|---------|
+| Slash only, no job | Orient in one short line. Ask for the job. Stop. |
+| Slash + any job text | Run **Intake**, then **Offer**, then work or wait. |
+
+### Intake
+
+From the paste, keep the real ask. Drop role-play, "act as", persona stacks, tool inventories, and filler. Restate the job in one sentence before you branch. If you cannot name a checkable done-line, intent is not locked — go to `/grill` (or offer Plan once). Do not invent scope they did not state.
+
+Then apply the priors this pack already ships: `yagni-bias` is on; for a feature or fix use `tdd` (red before theory); for a claim that might break neighbors use `@blast-radius` (prove by running). End a multi-file change with `verify` when the job is "done."
+
+### Offer
 
 Name the pack slot and the Cursor native for this job. First matching row wins, cheaper first. If they already named the native, skip the offer and do that. Otherwise offer the matching fork once. Wait. Do not pick. Do not re-offer every turn.
 
@@ -36,7 +52,7 @@ Name the pack slot and the Cursor native for this job. First matching row wins, 
 | Review a diff | `thermonuclear` | Bugbot, Security Review |
 | What can I type? | — | `reference.md` Cursor surface. Do not paste it. |
 
-This is an offer, not a mode. Do not wrap those natives.
+This is an offer, not a mode. Do not wrap those natives. Do not spawn a named-agent roster. Do not re-read a router skill for every turn.
 
 When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `inherit` the model unless they named one. If they named a slug Task does not list, say so. Write the `prompt` from the Task prompt contract. Do not invent a named agent.
 
@@ -48,17 +64,18 @@ When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `
 | Command | Knob. `/voice`, `/keep` |
 | Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` is the only always-on. |
 
-A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No copy of `/sdd` or `/sdd-eng` into this tree. No stack skill.
+A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No stack skill. `/sdd` and `/sdd-eng` are adopted from troysdd — edit upstream, then re-adopt.
 
 ## When the job is SDD
 
-- Creating or distilling product docs → `/sdd` (troysdd plugin).
-- Implementing a change against an existing owner → `/sdd-eng`.
-- Aligning intent first → `/grill`. `/grill docs` then `/sdd`.
-- Authoring a skill → `/create-skill` plus `write-skill`.
+- Creating or distilling product docs → `/sdd`
+- Implementing a change against an existing owner → `/sdd-eng`
+- Aligning intent first → `/grill`. `/grill docs` then `/sdd`
+- Authoring a skill → `/create-skill` plus `write-skill`
 
 Park thinking in `scratch/`. Do not map it. Do not commit it.
 
 ## Done
 
-The agent is oriented when it has named the pack slot and the Cursor native for this job, offered any matching fork once, and is waiting or working — without restating the README.
+- Slash only: oriented, waiting on a job, no catalog.
+- Slash + job: one-sentence restatement, fork offered once (or skipped), then working or grilling — without restating the README.

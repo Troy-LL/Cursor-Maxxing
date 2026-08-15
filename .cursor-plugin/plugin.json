@@ -34,7 +34,9 @@
     "./.cursor/commands/thermonuclear.md",
     "./.cursor/commands/verify.md",
     "./.cursor/commands/pre-flight.md",
-    "./.cursor/commands/evals.md"
+    "./.cursor/commands/evals.md",
+    "./.cursor/commands/sdd.md",
+    "./.cursor/commands/sdd-eng.md"
   ],
   "rules": [
     "./.cursor/rules/yagni-bias.mdc",
