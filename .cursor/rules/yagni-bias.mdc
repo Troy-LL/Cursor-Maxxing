@@ -1,0 +1,6 @@
+---
+description: Cheap YAGNI prior — write only what the task needs
+alwaysApply: true
+---
+
+Write only what the task needs. Reuse what is already in the repo, the stdlib, or an installed dependency before adding anything. Prefer one line when one line works. Never cut validation, error handling, security, accessibility, or anything the user asked for.

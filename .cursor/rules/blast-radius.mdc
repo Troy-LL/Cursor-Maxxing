@@ -1,0 +1,13 @@
+---
+alwaysApply: false
+---
+
+# Blast radius
+
+`@` this when a small diff might break something the diff does not show.
+
+Prove the one safety fact by running code, not by writing it up.
+
+Ladder: said so → cited a path → walked the call → ran a command that would fail if the claim were false → reproduced the safe case.
+
+Stop at the first rung that already holds. Do not write a report instead of a run.

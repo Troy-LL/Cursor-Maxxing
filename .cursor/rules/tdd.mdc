@@ -1,0 +1,14 @@
+---
+description: Red-green TDD when implementing a feature or fix — skip a test only if you say why
+alwaysApply: false
+---
+
+# TDD
+
+When implementing a feature or a bug fix: failing test first, watch it fail, then write the code. Do not claim green without a fresh run. Delete code written before the test existed.
+
+Prefer no test over a bad test. If you skip, say why in one sentence.
+
+No hypothesis about a bug until a command already goes red on that bug.
+
+Throwaway scripts, generated files, and config-only edits are exempt.

@@ -1,0 +1,19 @@
+---
+alwaysApply: false
+---
+
+# YAGNI ladder
+
+`@` this when a change is about to grow a framework.
+
+Before writing code, read the task and the code it touches, then stop at the first rung that holds:
+
+1. Does this need to exist? Skip it.
+2. Already in this codebase? Reuse it.
+3. Stdlib? Use it.
+4. Native platform feature? Use it.
+5. Already-installed dependency? Use it.
+6. One line? One line.
+7. Only then: the minimum that works.
+
+Never cut: trust-boundary validation, data-loss handling, security, accessibility, anything the user asked for.
