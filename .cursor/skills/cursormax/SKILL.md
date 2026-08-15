@@ -22,7 +22,7 @@ Do not dump those files into the reply. Follow them.
 
 ## Offer
 
-Name the pack slot and the Cursor native for this job. Offer the matching fork once. Wait. Do not pick. Do not re-offer every turn.
+Name the pack slot and the Cursor native for this job. First matching row wins, cheaper first. If they already named the native, skip the offer and do that. Otherwise offer the matching fork once. Wait. Do not pick. Do not re-offer every turn.
 
 | Job | This chat | Native to type |
 |-----|-----------|----------------|

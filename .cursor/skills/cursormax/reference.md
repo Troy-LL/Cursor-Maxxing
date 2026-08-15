@@ -81,11 +81,11 @@ The type is not enough. Write the `prompt` before spawn. Do not paste a playbook
 
 Every spawn, in this order:
 
-1. **Job** — one sentence. The user's actual job, not a template. What they return, not how they feel.
-2. **Read** — paths or owners. Cite. Do not paste the files.
+1. **Job** — one sentence. The user's actual job, not a template. Do not invent files, bugs, or folders they did not name. If those are unknown, spawn `explore` first or say unknown.
+2. **Read** — paths or owners. Cite. Do not paste. If paths are unknown, write "discover then cite" or spawn `explore` first. Do not invent paths.
 3. **Done** — one checkable line.
 4. **Return** — the shape (table, paths, verdict). No transcript dump.
-5. **Stop** — do not spawn children. Do not commit unless the job says so.
+5. **Stop** — do not spawn children. Do not commit unless the job says so. Parallel workers in the same tree: no git, no root manifests.
 
 Type extras:
 
@@ -95,7 +95,7 @@ Type extras:
 | `shell` | Commands only. Report exit codes. |
 | `cursor-guide` | Product how-to. No repo edits. |
 | `ci-investigator` | One failing check. Root cause, not a fix tour. |
-| `bugbot` / `security-review` | Use those Task types. Do not rewrite their rubric. |
+| `bugbot` / `security-review` | Use those Task types. Do not rewrite their rubric. Diff via `git status --short` and `git diff`. No implementer rationale. |
 | `best-of-n-runner` | Same job, isolated tree. |
 | `generalPurpose` | If they implement: failing test first when `tdd` is on. If they only survey: say so. |
 
