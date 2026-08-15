@@ -1,0 +1,45 @@
+{
+  "name": "cursormax",
+  "displayName": "Cursor Maxxing",
+  "version": "1.0.0",
+  "description": "Cursor-native workflow pack. Gap-or-out. First attempt accepted, net of tax. Stack-agnostic; adopt battle-tested skills, do not rewrite them. Not a Claude Code pack.",
+  "author": {
+    "name": "Troy"
+  },
+  "homepage": "https://github.com/Troy-LL/Cursor-Maxxing",
+  "repository": "https://github.com/Troy-LL/Cursor-Maxxing",
+  "keywords": [
+    "cursormax",
+    "native-first",
+    "first-shot",
+    "skills",
+    "rules",
+    "sdd"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "workflow",
+    "principles",
+    "skills",
+    "rules"
+  ],
+  "skills": "./.cursor/skills",
+  "commands": [
+    "./.cursor/commands/cursormax.md",
+    "./.cursor/commands/voice.md",
+    "./.cursor/commands/keep.md",
+    "./.cursor/commands/after-compact.md",
+    "./.cursor/commands/grill.md",
+    "./.cursor/commands/deepen.md",
+    "./.cursor/commands/thermonuclear.md",
+    "./.cursor/commands/verify.md",
+    "./.cursor/commands/pre-flight.md",
+    "./.cursor/commands/evals.md"
+  ],
+  "rules": [
+    "./.cursor/rules/yagni-bias.mdc",
+    "./.cursor/rules/yagni.mdc",
+    "./.cursor/rules/tdd.mdc",
+    "./.cursor/rules/blast-radius.mdc"
+  ]
+}
