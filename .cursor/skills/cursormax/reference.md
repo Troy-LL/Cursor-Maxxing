@@ -81,7 +81,7 @@ The type is not enough. Write the `prompt` before spawn. Do not paste a playbook
 
 Every spawn, in this order:
 
-1. **Job** — one sentence. What they return, not how they feel.
+1. **Job** — one sentence. The user's actual job, not a template. What they return, not how they feel.
 2. **Read** — paths or owners. Cite. Do not paste the files.
 3. **Done** — one checkable line.
 4. **Return** — the shape (table, paths, verdict). No transcript dump.
