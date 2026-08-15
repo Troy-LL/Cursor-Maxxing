@@ -38,7 +38,7 @@ Name the pack slot and the Cursor native for this job. Offer the matching fork o
 
 This is an offer, not a mode. Do not wrap those natives.
 
-When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `inherit` the model unless they named one. If they named a slug Task does not list, say so. Do not invent a named agent.
+When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `inherit` the model unless they named one. If they named a slug Task does not list, say so. Write the `prompt` from the Task prompt contract. Do not invent a named agent.
 
 ## Slots
 

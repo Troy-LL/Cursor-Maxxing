@@ -75,6 +75,32 @@ Spawn with Task. Pick the type. Do not invent a named agent. Do not wrap Bugbot 
 
 Slugs rot. Types do not. Read the Task tool list this session before passing `model`.
 
+## Task prompt
+
+The type is not enough. Write the `prompt` before spawn. Do not paste a playbook. Do not tell them to read a router skill first.
+
+Every spawn, in this order:
+
+1. **Job** — one sentence. What they return, not how they feel.
+2. **Read** — paths or owners. Cite. Do not paste the files.
+3. **Done** — one checkable line.
+4. **Return** — the shape (table, paths, verdict). No transcript dump.
+5. **Stop** — do not spawn children. Do not commit unless the job says so.
+
+Type extras:
+
+| Type | Extra in the prompt |
+|------|---------------------|
+| `explore` | Find. Do not edit. Thoroughness: quick / medium / very thorough. |
+| `shell` | Commands only. Report exit codes. |
+| `cursor-guide` | Product how-to. No repo edits. |
+| `ci-investigator` | One failing check. Root cause, not a fix tour. |
+| `bugbot` / `security-review` | Use those Task types. Do not rewrite their rubric. |
+| `best-of-n-runner` | Same job, isolated tree. |
+| `generalPurpose` | If they implement: failing test first when `tdd` is on. If they only survey: say so. |
+
+A blank "look at this repo" prompt is a miss. Improve it, then spawn.
+
 ## Leave out
 
 If Cursor ships it, do not wrap it: graph/codegraph, session or memory plugins, auto-routers, hook frameworks, checkpoint wrappers, cost CLIs, compact packs, output-style plugins, statusline themes, permission MCP, worktree managers, review-agent packs, Ralph loops, a second skill marketplace, rule or slash-command authoring playbooks, Browser/Playwright MCP, canvas taste packs, Plan wrappers, `/babysit` loops.
