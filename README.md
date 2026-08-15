@@ -2,35 +2,48 @@
 
 Cursor-native setup for people who already live in the IDE. Not a Claude Code pack.
 
-Claude Code "maxxing" repos add graph indexes, memory, session files, routers, hook frameworks, and overnight loops because that host needs them. Cursor already searches the tree, keeps the session, remembers, routes, checkpoints, compact, and runs Task subagents. Those layers are bloat here. Codegraph went out for that reason.
+A few on-demand skills, a few knobs, a few short priors. Nothing that wraps something Cursor already ships.
 
-Clone it and the agent is equipped: a few on-demand skills, knobs, and short priors. A new add still has to name a gap the IDE does not cover. See [docs/decisions/001-native-first.md](docs/decisions/001-native-first.md).
+## Start here
 
-We are not a token-golf pack. Efficiency is first-attempt correctness. See [docs/decisions/002-first-shot-efficiency.md](docs/decisions/002-first-shot-efficiency.md).
+1. Install the plugin — Cursor Settings → Plugins → add GitHub `Troy-LL/Cursor-Maxxing`. Or open this repo in Cursor and the project `.cursor/` loads with no marketplace step.
+2. Type `/cursormax`. It orients to the pack and names the Cursor native for the job in front of you.
+3. Type the thing you need from the table below.
 
-We do not know what you are building—and do not need to. Cursor Maxxing routes the community's battle-tested workflow skills into one Cursor-native pack that works identically whether you build a Rust CLI, a Next.js SaaS, or a data pipeline. Stack guides and framework integrations stay out. See [docs/decisions/003-workflow-not-stack.md](docs/decisions/003-workflow-not-stack.md).
-
-Product docs: **`/sdd`**. Implementation: **`/sdd-eng`**. Those two skills live in the troysdd plugin. This repo does not copy them.
-
-## What this ships
-
-| Kind | Path | When it loads |
-|------|------|----------------|
-| Skills | `.cursor/skills/cursormax`, `grill`, `deepen`, `thermonuclear`, `verify`, `pre-flight`, `evals`, `write-skill`, `after-compact` | `/cursormax` orients to the pack and offers the Cursor native for this job (also when `/sdd` runs here). `/grill`, `/deepen` are user-only. `thermonuclear`, `verify`, `pre-flight`, `evals`, `write-skill`, and `after-compact` are on-demand / model-invoked. |
-| Commands | `.cursor/commands/` | `/cursormax`, `/voice`, `/keep`, `/after-compact`, `/thermonuclear`, `/verify`, `/pre-flight`, `/evals`, plus stubs for `/grill` and `/deepen` |
-| Rules | `.cursor/rules/` | `yagni-bias` always-on (~40 words). `@yagni`, `tdd`, `@blast-radius` are opt-in. |
-
-Import: install the plugin. Manifest: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json).
-
-- This repo: open it in Cursor. Project `.cursor/` loads without a marketplace step.
-- Another repo: Cursor Settings → Plugins → add GitHub `Troy-LL/Cursor-Maxxing`, or add this folder as a local plugin. Then `/cursormax`.
-- Publish: [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) with this repository link.
+Manifest: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Publish with [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
 
 Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand unless you cannot install plugins.
 
-## Not this
+## What you type
 
-If Cursor ships it, we do not wrap it. If it assumes your stack, it belongs in your project rules.
+| Type this | What it does |
+|-----------|--------------|
+| `/cursormax` | Orient to the pack, get the Cursor native for this job |
+| `/grill` | Frontier interview. `/grill docs` then `/sdd` |
+| `/deepen` | List deepening candidates, wait, grill the pick |
+| `/thermonuclear` | In-session adversarial review and loop auditor |
+| `/verify` | Definition-of-Done gate before the turn ends |
+| `/pre-flight` | Build, secret, and deployment audit before you ship |
+| `/evals` | Scaffold hybrid evals, distill incident traces |
+| `/voice` | `plain` \| `ste` \| `off` |
+| `/keep`, `/after-compact` | Park a keep-alive, rehydrate after a compact |
+
+Product docs are **`/sdd`**. Implementation is **`/sdd-eng`**. Both live in the troysdd plugin; this repo does not copy them.
+
+Also on board: `write-skill` (author a skill — model-invoked), and the priors in `.cursor/rules/` — `yagni-bias` is always on at ~40 words, while `@yagni`, `tdd`, and `@blast-radius` are opt-in.
+
+## Why it looks like this
+
+Three decisions do most of the work.
+
+- **Native first.** Claude Code packs add graph indexes, memory, session files, routers, and overnight loops because that host needs them. Cursor already searches, remembers, routes, checkpoints, and compacts. Codegraph went out for that reason. A new add has to name a gap the IDE does not cover. → [001](docs/decisions/001-native-first.md)
+- **First-shot correctness, not token golf.** Efficiency here means getting it right on the first attempt. → [002](docs/decisions/002-first-shot-efficiency.md)
+- **Workflow, not stack.** We do not know what you are building and do not need to. Everything works the same on a Rust CLI, a Next.js SaaS, or a data pipeline. Stack guides and framework integrations stay out. → [003](docs/decisions/003-workflow-not-stack.md)
+
+<details>
+<summary><strong>What we deliberately leave out</strong> — if Cursor ships it, we do not wrap it</summary>
+
+If it assumes your stack, it belongs in your project rules instead.
 
 | Leave out | Cursor already ships / Where it belongs |
 |-----------|-----------------------------------------|
@@ -57,7 +70,10 @@ If Cursor ships it, we do not wrap it. If it assumes your stack, it belongs in y
 | Stack skills, framework guides, service integrations | App-specific `.cursor/rules/`, `cursor-directory` |
 | Rewrites of battle-tested community skills | Adopt verbatim with upstream attribution ([003](docs/decisions/003-workflow-not-stack.md)) |
 
-## What an MDC is
+</details>
+
+<details>
+<summary><strong>What an MDC is</strong> — and when to write one</summary>
 
 An `.mdc` in `.cursor/rules/` is a **constraint** injected into Agent context. It is not a skill, not a slash command, not `AGENTS.md`, and not a User Rule.
 
@@ -72,13 +88,13 @@ Cursor's [rules docs](https://cursor.com/docs/rules.md) give four attach modes. 
 
 Official bar: keep them short, one concern, concrete examples or `@` a file instead of pasting it. Add a rule when Agent makes the **same mistake repeatedly**. Do not copy a style guide the linter already owns. Do not document npm and git. Plain `.md` in `.cursor/rules/` is ignored. Use `AGENTS.md` if you want unscoped markdown.
 
-### Write an MDC when
+**Write one when**
 
 - The fact is project-specific and Agent will violate it without a prompt
 - It belongs on a glob (`**/*.tsx`, `src/api/**`) or on `@` mention
 - It is not already in README, `AGENTS.md`, User Rules, or a shipped skill
 
-### Do not write an MDC when
+**Do not write one when**
 
 - `/create-rule` or Customize → Rules is the authoring UI (do not wrap that)
 - The text is routing (`AGENTS.md`) or personal voice (User Rules)
@@ -86,10 +102,12 @@ Official bar: keep them short, one concern, concrete examples or `@` a file inst
 - The text is a hard stop (`beforeShellExecution` hook). Rules do not block `git reset --hard`
 - You want it in every chat and it already lives in README. Point at the file.
 
-This guidebook ships only the priors in `.cursor/rules/`. When an app needs a stack convention, type `/create-rule` or add it in Customize. Prefer `npx cursor-directory rules add <slug>` before writing from scratch. Use `write-skill` when the add is a workflow, not a constraint.
+This guidebook ships only the priors in `.cursor/rules/`. When an app needs a stack convention, type `/create-rule` or add it in Customize. Reach for an existing one before writing from scratch:
 
 ```bash
 npx cursor-directory rules add <slug-or-url>
 ```
 
-Skills: [skills.sh](https://skills.sh/) / `npx skills`. Do not install a Claude pack to get a marketplace.
+Skills: [skills.sh](https://skills.sh/) / `npx skills`. Use `write-skill` when the add is a workflow, not a constraint. Do not install a Claude pack to get a marketplace.
+
+</details>
