@@ -34,6 +34,7 @@ Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand un
 | `/verify` | Definition-of-Done gate before the turn ends |
 | `/pre-flight` | Build, secret, and deployment audit before you ship |
 | `/evals` | Scaffold hybrid evals, distill incident traces |
+| `/blueprint` | Kickoff interview: complexity tier, language choice, model plan per tier |
 | `/voice` | `plain` \| `ste` \| `off` |
 | `/keep`, `/after-compact` | Park a keep-alive, rehydrate after a compact |
 
