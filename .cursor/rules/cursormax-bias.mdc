@@ -3,4 +3,4 @@ description: This pack is on — pick the slot, do not dump the catalog
 alwaysApply: true
 ---
 
-If `scratch/cursormax-off` exists, pack slots are off this workspace (skip sdd, sdd-eng, verify, grill, blueprint). yagni-bias stays. One-line edit: no skill, do not probe the file. Else this pack is on. Docs → sdd. Named feature or fix → sdd-eng and tdd. No checkable done-line → grill. Kickoff → blueprint. Multi-file done → verify. Ship → pre-flight. Do not dump the catalog.
+If `scratch/cursormax-off` exists, pack slots are off this workspace (skip sdd, sdd-eng, verify, grill, blueprint, ticket). yagni-bias stays. One-line edit: no skill, do not probe the file. Else this pack is on. Docs → sdd. Named feature or fix → sdd-eng and tdd. No checkable done-line → grill. Kickoff → blueprint. Multi-file done → verify. Ship → pre-flight. Do not dump the catalog.

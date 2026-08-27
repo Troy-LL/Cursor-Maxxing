@@ -7,6 +7,8 @@ alwaysApply: false
 
 When implementing a feature or a bug fix: failing test first, watch it fail, then write the code. Do not claim green without a fresh run. Delete code written before the test existed.
 
+If `scratch/tickets/` has an open item for this change, the `Red` command on that ticket is the failing test. Do not invent a different red.
+
 Prefer no test over a bad test. If you skip, say why in one sentence.
 
 No hypothesis about a bug until a command already goes red on that bug.

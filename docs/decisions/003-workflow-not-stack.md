@@ -43,7 +43,7 @@ If an upstream fails our bar but contains an isolated durable workflow insight, 
 
 | Area | Workflow (In) | Stack (Out) |
 |---|---|---|
-| **Testing** | Language-agnostic red-green cycle (`tdd.mdc`) | Pytest / Vitest / Jest runner assertions or mock helpers |
+| **Testing** | Language-agnostic red-green cycle (`tdd.mdc`); local TDD pointer (`ticket`) | Pytest / Vitest / Jest runner assertions or mock helpers |
 | **Verification & Deploy** | Compiler exit code, secret leaks, `.env.example` parity, anti-stub scan (`verify`, `pre-flight`) | Vercel CLI deploy scripts, AWS CDK stacks, Dockerfiles |
 | **Security & Audits** | Auth boundary checks, tenant isolation, race condition checks (`thermonuclear`) | Supabase RLS policy templates, Prisma schema migrations |
 | **Evals** | Calibrated binary LLM-as-a-judge rubrics, trace-to-fixture distillation (`evals`) | Vendor SDK clients, LangChain pipeline scaffolds |

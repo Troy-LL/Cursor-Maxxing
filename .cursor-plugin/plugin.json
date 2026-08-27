@@ -36,6 +36,7 @@
     "./.cursor/commands/verify.md",
     "./.cursor/commands/pre-flight.md",
     "./.cursor/commands/evals.md",
+    "./.cursor/commands/ticket.md",
     "./.cursor/commands/sdd.md",
     "./.cursor/commands/sdd-eng.md"
   ],
