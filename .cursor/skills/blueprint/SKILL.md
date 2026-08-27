@@ -1,11 +1,10 @@
 ---
 name: blueprint
 description: >-
-  Blueprints a job before it starts: triages its complexity tier,
-  interviews on language choice for new projects, and sets a model plan
-  across Cursor's usage pools. Use when the user says /blueprint or asks
-  for a project kickoff plan. Not for mid-task use or one-line edits.
-disable-model-invocation: true
+  Blueprints a job before it starts: triages complexity, interviews language
+  for greenfield, and sets a model plan. Use when starting a new project, a
+  whole-job kickoff, or they ask how to spend the model budget. Do not use
+  mid-task or for one-line edits.
 ---
 
 # Blueprint

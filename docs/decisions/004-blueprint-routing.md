@@ -16,7 +16,7 @@ Research grounding:
 ## Decision
 
 1. Ship `.cursor/skills/blueprint/SKILL.md` + `/blueprint` command: complexity triage (T0–T3), intent gate to `/grill`, language interview for greenfield only, tier→cost-class model plan, inline-vs-Task fork offered once.
-2. The skill advises; per-call routing stays with Auto. No wrapper, no always-on tax (`disable-model-invocation: true`).
+2. The skill advises; per-call routing stays with Auto. No wrapper. Not always-on: the description excludes mid-task and one-line edits so kickoff can auto-fire without taxing a rename.
 3. Evidence infrastructure lives uncommitted in `scratch/evals/` (trace fixture template + experiment protocol) with three graded fixtures in `scratch/dummies/`.
 4. Model names are resolved from the live picker at run time; the pack records cost classes only.
 

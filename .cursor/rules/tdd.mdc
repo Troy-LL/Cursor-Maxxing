@@ -1,5 +1,5 @@
 ---
-description: Red-green TDD when implementing a feature or fix — skip a test only if you say why
+description: Use when implementing a feature or a bug fix — failing test first. Do not use for throwaway scripts, generated files, or config-only edits.
 alwaysApply: false
 ---
 

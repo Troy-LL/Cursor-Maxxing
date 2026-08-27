@@ -1,11 +1,12 @@
 ---
 name: grill
 description: >-
-  Relentless frontier interview to lock intent before building. Use when the
-  user says grill, grill me, grill docs, align, or stress-test a plan or
-  design. Do not use for cheap reversible edits or after they already confirmed
-  a shared understanding.
-disable-model-invocation: true
+  Relentless frontier interview to lock intent before building. Use when
+  there is no checkable done-line, they want to align or stress-test a plan,
+  or they say grill / grill docs. Do not use for cheap reversible edits, after
+  they already confirmed a shared understanding, when they named a feature or
+  fix against an existing map (that is sdd-eng), or when they asked to deepen
+  architecture without typing deepen (that is /deepen).
 ---
 
 # Grill
