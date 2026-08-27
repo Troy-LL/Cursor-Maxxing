@@ -2,7 +2,7 @@
   "name": "cursormax",
   "displayName": "Cursor Maxxing",
   "version": "1.0.0",
-  "description": "Cursor-native workflow pack. Gap-or-out. First attempt accepted, net of tax. Stack-agnostic; adopt battle-tested skills, do not rewrite them. Not a Claude Code pack.",
+  "description": "Workflow pack: spec docs, implement against the map, verify before you yield, pre-flight before you ship. Not a Claude Code pack.",
   "author": {
     "name": "Troy"
   },
@@ -41,6 +41,7 @@
   ],
   "rules": [
     "./.cursor/rules/yagni-bias.mdc",
+    "./.cursor/rules/cursormax-bias.mdc",
     "./.cursor/rules/yagni.mdc",
     "./.cursor/rules/tdd.mdc",
     "./.cursor/rules/blast-radius.mdc"
