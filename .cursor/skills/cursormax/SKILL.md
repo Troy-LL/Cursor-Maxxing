@@ -11,7 +11,7 @@ description: >-
 
 # Cursor Maxxing
 
-This pack is a small Cursor-native kit. It is not a Claude Code encyclopedia and not a pstack / poteto-mode orchestra.
+This pack is a small Cursor-native kit. It is not a Claude Code pack and not a pstack / poteto-mode orchestra.
 
 ## Load
 

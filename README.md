@@ -33,11 +33,12 @@ The test: could the agent usefully reach for this on its own? If yes, it is mode
 | `sdd` | Product docs: README, AGENTS.md, architecture, design, eval, one ADR |
 | `sdd-eng` | A feature, fix, or refactor against that map |
 | `grill` | No checkable done-line, align / stress-test a plan. `/grill docs` then `sdd` |
-| `blueprint` | New project or whole-job kickoff. Not mid-task |
+| `blueprint` | New project or whole-job kickoff. Not mid-task. No model picking unless they asked |
 | `verify` | Multi-file work about to be called done |
 | `thermonuclear` | Adversarial in-session review |
 | `pre-flight` | About to ship |
-| `evals` | Non-deterministic pipelines, traces into fixtures |
+| `ticket` | Feature/fix with no path or no named failing test. Local scratch pointer, not GitHub |
+| `evals` | Non-deterministic pipelines, traces into fixtures. Not for picking a Cursor model |
 | `write-skill` | Authoring a skill |
 | `after-compact` | Chat was compacted and `scratch/keep-alive` is on |
 | `cursormax` | They asked what this pack is, or pasted a job after `/cursormax` |

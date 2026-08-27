@@ -21,11 +21,12 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | `sdd` | Product docs (adopted from troysdd) |
 | `sdd-eng` | Behavior change against the map (adopted from troysdd) |
 | `grill` | Frontier interview when there is no checkable done-line. `/grill docs` then `sdd` |
-| `blueprint` | Whole-job kickoff. Not mid-task |
+| `blueprint` | Whole-job kickoff. Not mid-task. Model plan only if they asked about cost |
 | `thermonuclear` | In-session adversarial review & loop auditor |
 | `verify` | In-turn Definition-of-Done verification gate |
 | `pre-flight` | Pre-launch build, secret & deployment audit |
-| `evals` | Scaffolds hybrid evals and distills incident traces |
+| `ticket` | Local TDD pointer in `scratch/tickets/`. Not a GitHub/Linear wrap |
+| `evals` | Pipeline evals and trace-to-fixture. Not a Cursor model picker |
 | `write-skill` | Author a skill. Do not wrap `/create-skill` |
 | `after-compact` | Rehydrate from `scratch/keep-alive` if present |
 

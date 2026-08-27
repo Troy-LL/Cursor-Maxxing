@@ -5,7 +5,8 @@ description: >-
   distill raw JSON production traces into reproducible test fixtures. Use when
   building or testing non-deterministic AI pipelines, prompts, RAG retrieval, or
   converting incident traces into regression tests. Do not use for purely
-  deterministic code where standard TDD applies.
+  deterministic code where standard TDD applies, ordinary product features, or
+  picking a Cursor chat model.
 ---
 
 # Evals
