@@ -11,24 +11,40 @@ Portable constitution. Use this when the guidebook repo files are not in the wor
 
 ## Catalog
 
-| Kind | What |
-|------|------|
-| `/cursormax` | Orient, or intake a pasted job (messy/meta OK) and offer the Cursor native |
-| `/sdd` | Product docs (adopted from troysdd) |
-| `/sdd-eng` | Behavior change against the map (adopted from troysdd) |
-| `/grill` | Frontier interview. `/grill docs` then `/sdd` |
-| `/deepen` | List deepening candidates, wait, then grill the pick |
+Who can reach it is the split. Model-invoked: the agent may pull it when the task matches; you can still type `/`. User-invoked: only the human starts it.
+
+**Model-invoked**
+
+| Skill | What |
+|-------|------|
+| `cursormax` | Orient, or intake a pasted job. `on` / `off` is the workspace pack knob (default on) |
+| `sdd` | Product docs (adopted from troysdd) |
+| `sdd-eng` | Behavior change against the map (adopted from troysdd) |
+| `grill` | Frontier interview when there is no checkable done-line. `/grill docs` then `sdd` |
+| `blueprint` | Whole-job kickoff. Not mid-task |
 | `thermonuclear` | In-session adversarial review & loop auditor |
 | `verify` | In-turn Definition-of-Done verification gate |
 | `pre-flight` | Pre-launch build, secret & deployment audit |
 | `evals` | Scaffolds hybrid evals and distills incident traces |
 | `write-skill` | Author a skill. Do not wrap `/create-skill` |
 | `after-compact` | Rehydrate from `scratch/keep-alive` if present |
+
+**User-invoked**
+
+| Skill / knob | What |
+|--------------|------|
+| `/deepen` | List deepening candidates, wait, then grill the pick |
 | `/voice` | `plain` \| `ste` \| `off` |
 | `/keep` | Write or delete `scratch/keep-alive` |
+
+**Always-on / opt-in priors**
+
+| Prior | What |
+|-------|------|
 | `yagni-bias` | Always-on, ~40 words |
+| `cursormax-bias` | Always-on. Pack is on unless `scratch/cursormax-off` exists |
 | `@yagni` | 7-rung ladder |
-| `tdd` | Red-green. Skip only if you say why |
+| `tdd` | Red-green on a feature or fix. Skip only if you say why |
 | `@blast-radius` | Said → cited → walked → ran |
 
 Product docs: `/sdd`. Implementation: `/sdd-eng`. Both ship here from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd). Do not rewrite them in this tree.

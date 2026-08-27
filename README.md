@@ -1,46 +1,63 @@
 # Cursor Maxxing
 
-Cursor-native setup for people who already live in the IDE. Not a Claude Code pack.
+Cursor-native workflow pack. Install it and talk. You do not need to know the slash names. Not a Claude Code pack.
 
-A few on-demand skills, a few knobs, a few short priors. Nothing that wraps something Cursor already ships.
+A few skills, a few knobs, a few short priors. Nothing that wraps something Cursor already ships. Stack-agnostic: same pack on a CLI, a SaaS, or a pipeline.
 
 ## Start here
 
-1. Install the plugin — Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Or open this repo in Cursor and the project `.cursor/` loads with no marketplace step.
-2. Type **`/cursormax`**.
-3. Type anything else from the table below when you need a specific workflow.
+1. Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Each push to this repo updates the install.
+2. Chat. The pack is on. Docs, features, kickoff, verify, and ship can pull themselves. A job with no checkable done-line gets an interview. You do not need `/cursormax` first.
+3. **`/cursormax off`** mutes pack slots in this workspace (`scratch/cursormax-off`; do not commit). **`/cursormax on`** turns them back on. Customize → disable plugin is the hard off.
 
-### `/cursormax` two ways
-
-| You type | What happens |
-|----------|--------------|
-| `/cursormax` alone | Orients the agent to this pack. Fine. No job required. |
-| `/cursormax` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
-
-Catalog: [`.cursor-plugin/marketplace.json`](.cursor-plugin/marketplace.json) (what Customize import reads). Plugin: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json). Publish with [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
+Open this repo only to edit the pack. If you already imported the plugin, do not also open this repo as the project — every skill loads twice.
 
 Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand unless you cannot install plugins.
 
-## What you type
+Catalog: [`.cursor-plugin/marketplace.json`](.cursor-plugin/marketplace.json) (what Customize import reads). Plugin: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json).
+
+### `/cursormax` if you want it
+
+| You type | What happens |
+|----------|--------------|
+| `/cursormax` alone | Orients. Reports if this workspace is soft-off. Fine. No job required. |
+| `/cursormax` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
+| `/cursormax off` / `on` | Workspace pack knob. Default is on (no file). Soft-off only — plugin skills may still list. |
+
+## What fires without you typing it
+
+The test: could the agent usefully reach for this on its own? If yes, it is model-invoked. You can still type the `/` if you want that session by name.
+
+| Skill | When it should pull |
+|-------|---------------------|
+| `sdd` | Product docs: README, AGENTS.md, architecture, design, eval, one ADR |
+| `sdd-eng` | A feature, fix, or refactor against that map |
+| `grill` | No checkable done-line, align / stress-test a plan. `/grill docs` then `sdd` |
+| `blueprint` | New project or whole-job kickoff. Not mid-task |
+| `verify` | Multi-file work about to be called done |
+| `thermonuclear` | Adversarial in-session review |
+| `pre-flight` | About to ship |
+| `evals` | Non-deterministic pipelines, traces into fixtures |
+| `write-skill` | Authoring a skill |
+| `after-compact` | Chat was compacted and `scratch/keep-alive` is on |
+| `cursormax` | They asked what this pack is, or pasted a job after `/cursormax` |
+
+`tdd` is the same idea as a prior: feature or fix, not a throwaway script.
+
+## What only you start
+
+These must not run unprompted.
 
 | Type this | What it does |
 |-----------|--------------|
-| `/cursormax` | Alone: orient. With a paste: intake the job and name the Cursor native |
-| `/sdd` | Product docs: README, AGENTS.md, architecture, design, eval, one ADR |
-| `/sdd-eng` | Implement a behavior change against that map |
-| `/grill` | Frontier interview. `/grill docs` then `/sdd` |
 | `/deepen` | List deepening candidates, wait, grill the pick |
-| `/thermonuclear` | In-session adversarial review and loop auditor |
-| `/verify` | Definition-of-Done gate before the turn ends |
-| `/pre-flight` | Build, secret, and deployment audit before you ship |
-| `/evals` | Scaffold hybrid evals, distill incident traces |
-| `/blueprint` | Kickoff interview: complexity tier, language choice, model plan per tier |
 | `/voice` | `plain` \| `ste` \| `off` |
-| `/keep`, `/after-compact` | Park a keep-alive, rehydrate after a compact |
+| `/keep` | Park a keep-alive for after-compact |
+| `/cursormax off` / `on` | Mute or restore pack slots in this workspace |
 
-Product docs are **`/sdd`**. Implementation is **`/sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
+Product docs are **`sdd`**. Implementation is **`sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
 
-Also on board: `write-skill` (author a skill — model-invoked), and the priors in `.cursor/rules/` — `yagni-bias` is always on at ~40 words, while `@yagni`, `tdd`, and `@blast-radius` are opt-in.
+Priors in `.cursor/rules/`: `yagni-bias` and `cursormax-bias` are always on (~40 words each). `@yagni`, `tdd`, and `@blast-radius` attach when the task matches, or when you `@` them.
 
 ## Why it looks like this
 
