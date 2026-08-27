@@ -15,9 +15,9 @@ Research grounding:
 
 ## Decision
 
-1. Ship `.cursor/skills/blueprint/SKILL.md` + `/blueprint` command: complexity triage (T0–T3), intent gate to `/grill`, language interview for greenfield only, tier→cost-class model plan, inline-vs-Task fork offered once.
-2. The skill advises; per-call routing stays with Auto. No wrapper. Not always-on: the description excludes mid-task and one-line edits so kickoff can auto-fire without taxing a rename.
-3. Evidence infrastructure lives uncommitted in `scratch/evals/` (trace fixture template + experiment protocol) with three graded fixtures in `scratch/dummies/`.
+1. Ship `.cursor/skills/blueprint/SKILL.md` + `/blueprint` command: complexity triage (T0–T3), intent gate to `/grill`, language interview for greenfield only, inline-vs-Task fork offered once. The model-tier table lives in `model-plan.md` and loads only when they asked about cost, tokens, or the picker.
+2. The skill advises; per-call routing stays with Auto. No wrapper. Ordinary kickoff does not name models. Not always-on: the description excludes mid-task, one-line edits, and unsolicited model picking.
+3. Evidence for the opt-in table is `docs/eval.md` in this guidebook (traces in `docs/evals/traces/`). Product installs do not load that file.
 4. Model names are resolved from the live picker at run time; the pack records cost classes only.
 
 ## Alternatives considered

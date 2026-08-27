@@ -1,15 +1,14 @@
 ---
 name: blueprint
 description: >-
-  Blueprints a job before it starts: triages complexity, interviews language
-  for greenfield, and sets a model plan. Use when starting a new project, a
-  whole-job kickoff, or they ask how to spend the model budget. Do not use
-  mid-task or for one-line edits.
+  Blueprints a job before it starts: triages complexity and interviews
+  language for greenfield. Use when starting a new project or a whole-job
+  kickoff. Do not use mid-task or for one-line edits.
 ---
 
 # Blueprint
 
-Set the deliberate plan for a whole job before spending tokens. Cursor's Auto routes each call; this decides the tier up front so per-call routing has a target.
+Set the plan for a whole job before coding. Per-call routing stays with Auto.
 
 ## 1. Triage
 
@@ -39,18 +38,9 @@ If the repo already has an established language, confirm it in one line and move
 
 State the pick with its rationale in three sentences or fewer, including at least one cost you accept. Done when: the language is named with reasoning, or the existing language is confirmed.
 
-## 4. Model plan
+## 4. Model plan (skip unless asked)
 
-Cursor prices two pools: an included-usage pool of its own models and an API-rate pool for frontier models — check the current model picker for exact names and rates, they change often. Map the tier to cost classes:
-
-| Tier | Plan |
-|------|------|
-| T0 | Cheapest included-usage class, inline chat. No ceremony. |
-| T1 | Included-usage standard effort; a Task subagent only when parallel attempts pay. |
-| T2 | High-effort included-usage flagship or mid-tier API-rate class; Task subagents for isolated modules. |
-| T3 | One top-tier architecture pass once intent is locked; mechanical edits drop back down-tier afterward. |
-
-When uncertain, start one tier below your guess and escalate after two failed attempts rather than pre-paying frontier rates. Name where each phase runs (model picker vs Auto). Done when: every planned phase names its model source.
+If they did not ask about models, cost, tokens, or the picker: skip. Do not name vendors. Otherwise Read [model-plan.md](model-plan.md) and follow it.
 
 ## 5. Execution fork
 
@@ -58,4 +48,4 @@ Offer once: run inline in this chat, or dispatch via Task (`/create-subagent`). 
 
 ## Handoff
 
-Write the blueprint block (tier, language rationale, model plan, fork) to `scratch/`. Then offer one matching next step and wait: `/grill` if intent opened up mid-planning, `tdd` for feature work, `@blast-radius` for wide claims, `/verify` at the end of a multi-file change.
+Write the blueprint block (tier, language rationale, fork; model plan only if section 4 ran) to `scratch/`. Then offer one matching next step and wait: `/grill` if intent opened up mid-planning, `tdd` for feature work, `@blast-radius` for wide claims, `/verify` at the end of a multi-file change.
