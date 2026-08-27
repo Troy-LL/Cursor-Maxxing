@@ -1,5 +1,5 @@
 # /pre-flight
 
-Read and follow `.cursor/skills/pre-flight/SKILL.md`.
+Follow the `pre-flight` skill.
 
-Use before deploying to production to run the 10-point build, security, and configuration launch audit.
+Use before deploying to production to run the build, secret, and deployment launch audit.

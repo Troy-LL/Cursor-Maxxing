@@ -6,4 +6,4 @@ Arm or disarm compact rehydrate for this workspace.
 - `/keep off` — delete `scratch/keep-alive`.
 - `/keep` — report whether the file exists.
 
-Do not commit `scratch/keep-alive`. Do not write a session diary. The rehydrate body is `.cursor/skills/after-compact/SKILL.md`.
+Do not commit `scratch/keep-alive`. Do not write a session diary. The rehydrate body is the `after-compact` skill.
