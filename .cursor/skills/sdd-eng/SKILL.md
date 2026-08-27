@@ -9,8 +9,8 @@ description: >-
   omitting product docs, distilling a PRD or idea dump, promoting scratch or a
   Proposed line, scaffolding Spec Kit / OpenSpec / Kiro, dual-writing
   CLAUDE.md, writing a markdown twin of OpenAPI or schema, or deciding whether
-  a new durable file should exist.
-disable-model-invocation: true
+  a new durable file should exist. Do not use for a one-line edit, rename, or
+  format pass.
 ---
 
 A change. `/sdd-eng`. Load stays on the product `AGENTS.md`. Authoring is `/sdd`.
