@@ -27,8 +27,10 @@ Most people type `/cursormax` (or "Cursor Max") and paste a job — often a meta
 
 | What they sent | Do this |
 |----------------|---------|
-| Slash only, no job | Orient in one short line. Ask for the job. Stop. |
-| Slash + any job text | Run **Intake**, then **Offer**, then work or wait. |
+| Exactly `off` | Already handled in the command. Do not Intake. |
+| Exactly `on` | Already handled in the command. Do not Intake. |
+| Slash only, no job | Orient in one short line. Report soft-off if `scratch/cursormax-off` exists. Ask for the job. Stop. |
+| Slash + any job text | Run **Intake**, then **Offer**, then work or wait. Do not treat leftover `on`/`off` inside a sentence as the knob. |
 
 ### Intake
 
@@ -61,8 +63,8 @@ When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `
 | Kind | Use |
 |------|-----|
 | Skill | Workflow. Host `.cursor/skills/` for new ones; this pack's skills arrive via the plugin |
-| Command | Knob. `/voice`, `/keep` |
-| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` is the only always-on. |
+| Command | Knob. `/voice`, `/keep`, `/cursormax on` \| `off` |
+| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` and `cursormax-bias` are always-on. |
 
 A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No stack skill. `/sdd` and `/sdd-eng` are adopted from troysdd — edit upstream, then re-adopt.
 
@@ -77,5 +79,6 @@ Park thinking in `scratch/`. Do not map it. Do not commit it.
 
 ## Done
 
-- Slash only: oriented, waiting on a job, no catalog.
+- Slash only: oriented, waiting on a job, no catalog. Soft-off reported if the file exists.
+- Exactly `on` / `off`: knob already applied in the command. Stop.
 - Slash + job: one-sentence restatement, fork offered once (or skipped), then working or grilling — without restating the README.
