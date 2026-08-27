@@ -4,8 +4,8 @@ description: >-
   Scaffold deterministic assertions, calibrated LLM-as-a-judge eval suites, or
   distill raw JSON production traces into reproducible test fixtures. Use when
   building or testing non-deterministic AI pipelines, prompts, RAG retrieval, or
-  converting incident traces (Langfuse, Arize, Braintrust, Sentry) into pytest or vitest
-  regression tests. Do not use for purely deterministic code where standard TDD applies.
+  converting incident traces into regression tests. Do not use for purely
+  deterministic code where standard TDD applies.
 ---
 
 # Evals
@@ -17,7 +17,7 @@ Build eval suites for non-deterministic AI pipelines and distill failure traces 
 When testing an LLM pipeline, extraction task, or agent step:
 
 1. **Deterministic Bounds First**:
-   - Schema validation (Pydantic / Zod).
+   - Schema validation (the project's schema library).
    - Tool call presence and parameter type checks.
    - Latency thresholds and token/cost caps.
    - Exact substring / regex negative assertions (e.g. no leaked system prompts or placeholder tokens).
@@ -32,11 +32,11 @@ When testing an LLM pipeline, extraction task, or agent step:
 
 ## 2. Trace Distillation Mode (Trace-to-Fixture)
 
-When converting a production failure trace (e.g. from Langfuse, Arize, or Sentry) into a test fixture:
+When converting a production failure trace (from the project's trace host) into a test fixture:
 
 1. Extract the raw user input, system prompt version, and tool execution history from the trace payload.
 2. Isolate the exact point of failure (schema violation, tool argument hallucination, bad reasoning, ungrounded claim).
-3. Generate a minimal, standalone, parameterized test fixture in `pytest` or `vitest` mocking all upstream tool calls up to the failure point.
+3. Generate a minimal, standalone, parameterized test fixture in the project's test runner, mocking all upstream tool calls up to the failure point.
 
 ## Done
 
