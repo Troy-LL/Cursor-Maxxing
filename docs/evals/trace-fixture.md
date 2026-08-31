@@ -1,6 +1,6 @@
 # Trace
 
-- Dummy: t0-cli / t1-api / t3-spec
+- Dummy: t0-cli / t1-nook / t1-api / t3-spec
 - Arm: routed / always-cheap / always-frontier
 - Date:
 - Model (picker name):

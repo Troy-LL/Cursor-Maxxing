@@ -1,9 +1,9 @@
 # /keep
 
-Arm or disarm compact rehydrate for this workspace.
+Opt out of compact rehydrate for this workspace. Default is on.
 
-- `/keep on` — write `scratch/keep-alive` (one line: `on`). The `after-compact` skill may then run when the chat looks summarized.
-- `/keep off` — delete `scratch/keep-alive`.
-- `/keep` — report whether the file exists.
+- `/keep off` — write `scratch/keep-off` (one line: `off`). `after-compact` will not auto-run.
+- `/keep on` — delete `scratch/keep-off` (and leftover `scratch/keep-alive`). Default restored.
+- `/keep` — report whether opt-out is on.
 
-Do not commit `scratch/keep-alive`. Do not write a session diary. The rehydrate body is the `after-compact` skill.
+Do not commit `scratch/keep-off`. Do not write a session diary. The rehydrate body is the `after-compact` skill.

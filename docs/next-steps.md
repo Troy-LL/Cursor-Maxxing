@@ -5,7 +5,7 @@ Protocol: [docs/eval.md](eval.md). T0 dummy [docs/evals/dummies/t0-cli](evals/du
 ## Where we are
 
 - Ordinary kickoff: triage + language + fork. Model plan loads only if they asked about cost.
-- Tier table = EXPERIMENT. Zero traces that qualify for 004 (need an EVAL-TASK that asks for a cost class).
+- Tier table = EXPERIMENT. Qualifying dummy is `docs/evals/dummies/t1-nook`. Zero traces yet. t0-cli stays red-health only.
 - Tickets: `scratch/tickets/` ([ADR 005](decisions/005-tickets-as-tdd-pointers.md)).
 
 ## Decision gate (from ADR 004)

@@ -14,7 +14,7 @@ A skill is a workflow with a pointer. It is not a rule and not a knob.
 ## Before writing
 
 1. Name the gap Cursor does not already ship. If Plan, Task, Bugbot, `/sdd`, or `/create-skill` covers it, stop.
-2. Ask: does this raise the probability the first attempt is the accepted attempt, net of its context tax?
+2. Ask: does this raise the probability the first few attempts are accepted, net of tax, on a cold install, on an arbitrary model?
 3. Does this work unchanged on a project we have never seen? If it needs a language, framework, database, or vendor, stop.
 4. Is this already battle-tested upstream? If yes and it passes 001/002/003, adopt with attribution. Do not extract. Do not rewrite.
 5. Put it in `.cursor/skills/<name>/SKILL.md`.

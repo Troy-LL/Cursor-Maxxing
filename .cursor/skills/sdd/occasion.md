@@ -1,6 +1,6 @@
 # Occasion
 
-Create the _owner_ of a fact. Absence is correct. A _twin_ (markdown recap of schema, OpenAPI, or topology) is the same job under a new name — edit the owner instead.
+Create the _owner_ of a fact. Absence is correct. A _twin_ (markdown recap of schema, OpenAPI, or topology, or a glossary / Names dump) is the same job under a new name — edit the owner instead.
 
 Intent stays in the file that changed. Job still many-valued → Read [promote.md](promote.md). Do not fill a durable template to look busy.
 
@@ -8,7 +8,7 @@ Intent stays in the file that changed. Job still many-valued → Read [promote.m
 
 1. **Name the job.** One sentence: what an agent with _only this file_ would do. Done when that sentence is falsifiable this turn (“there is a screen”, “topology is not in compose”).
 2. **Match occasion.** Use the table below. Default omit. Done when every path you would create has a true job, or you create none.
-3. **Write the owner.** One fact, one file. Point at schema/types; leave contracts in OpenAPI / proto / SQL. If the file is `AGENTS.md`, Read [map.md](map.md). If the file is a durable doc, Read [owners.md](owners.md) for that heading. Done when the fact lives in one place and the map bullets only files that exist.
+3. **Seat the fact.** If the path already exists and is non-empty: Read it, then patch in place (merge the new fact; keep the rest until the user deletes a fact on purpose). A full-file replace of a living owner fails this step. Create only when the path is empty or missing. One fact, one file. When the user names a thing, write that name next to the fact it names. If two owners could claim the word, ask once, then seat. Do not mint `docs/glossary.md`. Point at schema/types; leave contracts in OpenAPI / proto / SQL. If the file is `AGENTS.md`, Read [map.md](map.md). If the file is a durable doc, Read [owners.md](owners.md) for that heading. Done when the fact lives in one place and the map bullets only files that exist.
 4. **Stop.** One owner per fact.
 
 ## Occasion (default omit)
@@ -26,6 +26,6 @@ Intent stays in the file that changed. Job still many-valued → Read [promote.m
 | Package commands differ | nested `AGENTS.md` |
 | You ship weights or a dataset | card next to that artifact (Hub README) |
 
-Would an agent with only this file do a **different** job? If not, you are writing a twin.
+Would an agent with only this file do a **different** job? If not, you are writing a twin. A glossary is a twin.
 
 GitHub health files (`LICENSE`, `SECURITY.md`, `CONTRIBUTING.md`) wait for a host UI, a lawyer, or outsiders. `GOVERNANCE.md` waits for a real decision body. A runbook waits for a paging alert.

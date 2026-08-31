@@ -4,7 +4,7 @@
 
 ## Inside
 
-- One bullet per file that exists. Front-load the job word. One trigger per branch (see writing-for-agents).
+- One bullet per file that exists. Front-load the job word. One trigger per branch (see writing-for-agents). Do not map a glossary.
 - Load _ceiling_: this file + at most 2 extras, or +3 if this turn needs `eval.md`. Ceiling, not quota. Skip unused.
 - Commands and never-dos that differ from defaults.
 - Two lines that permit `scratch/` without listing it.

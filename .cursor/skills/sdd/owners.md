@@ -2,6 +2,8 @@
 
 What belongs inside each durable file. Open the heading you are writing. Delete the file the day the job dies, and drop the map bullet the same day.
 
+When the user names a thing, write that name next to the fact it names in this file. If two owners could claim the word, ask once, then seat. Even if they asked for a glossary, seat here and say why. Do not mint `docs/glossary.md`. Aliases that already live here sit on the same heading as the fact — not a twin Names file.
+
 ## README.md
 
 What it is, who it is for, how to run (install, command, config path, port, health), limits operators hit. Exact strings. Library: install + one usage snippet. Relative links to sibling docs.

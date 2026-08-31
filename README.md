@@ -8,7 +8,7 @@ A few skills, a few knobs, a few short priors. Nothing that wraps something Curs
 
 1. Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Each push to this repo updates the install.
 2. Chat. The pack is on. Docs, features, kickoff, verify, and ship can pull themselves. A job with no checkable done-line gets an interview. You do not need `/cursormax` first.
-3. **`/cursormax off`** mutes pack slots in this workspace (`scratch/cursormax-off`; do not commit). **`/cursormax on`** turns them back on. Customize → disable plugin is the hard off.
+3. **`/cursormax off`** mutes pack slots in this workspace (`scratch/cursormax-off`; do not commit). **`/cursormax on`** turns them back on. Customize → disable plugin is the hard off. Soft-off is the right default when another workflow pack (pstack / poteto-mode) should own the loop — we cannot stop other plugins, so we yield.
 
 Open this repo only to edit the pack. If you already imported the plugin, do not also open this repo as the project — every skill loads twice.
 
@@ -38,9 +38,9 @@ The test: could the agent usefully reach for this on its own? If yes, it is mode
 | `thermonuclear` | Adversarial in-session review |
 | `pre-flight` | About to ship |
 | `ticket` | Feature/fix with no path or no named failing test. Local scratch pointer, not GitHub |
-| `evals` | Non-deterministic pipelines, traces into fixtures. Not for picking a Cursor model |
+| `evals` | Pipelines, traces into fixtures, cost class for this repo. Do not pin a vendor model |
 | `write-skill` | Authoring a skill |
-| `after-compact` | Chat was compacted and `scratch/keep-alive` is on |
+| `after-compact` | Chat was compacted. Opt out with `/keep off` |
 | `cursormax` | They asked what this pack is, or pasted a job after `/cursormax` |
 
 `tdd` is the same idea as a prior: feature or fix, not a throwaway script.
@@ -53,7 +53,7 @@ These must not run unprompted.
 |-----------|--------------|
 | `/deepen` | List deepening candidates, wait, grill the pick |
 | `/voice` | `plain` \| `ste` \| `off` |
-| `/keep` | Park a keep-alive for after-compact |
+| `/keep` | Opt out of after-compact (`/keep off`). Default is on |
 | `/cursormax off` / `on` | Mute or restore pack slots in this workspace |
 
 Product docs are **`sdd`**. Implementation is **`sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
@@ -65,7 +65,7 @@ Priors in `.cursor/rules/`: `yagni-bias` and `cursormax-bias` are always on (~40
 Three decisions do most of the work.
 
 - **Native first.** Claude Code packs add graph indexes, memory, session files, routers, and overnight loops because that host needs them. Cursor already searches, remembers, routes, checkpoints, and compacts. Codegraph went out for that reason. A new add has to name a gap the IDE does not cover. → [001](docs/decisions/001-native-first.md)
-- **First-shot correctness, not token golf.** Efficiency here means getting it right on the first attempt. → [002](docs/decisions/002-first-shot-efficiency.md)
+- **Few first shots, not token golf.** Efficiency here means the first few attempts are accepted, out of the box, on whatever model the host picked. Not one-shot perfection. → [002](docs/decisions/002-first-shot-efficiency.md)
 - **Workflow, not stack.** We do not know what you are building and do not need to. Everything works the same on a Rust CLI, a Next.js SaaS, or a data pipeline. Stack guides and framework integrations stay out. → [003](docs/decisions/003-workflow-not-stack.md)
 
 <details>

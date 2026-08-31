@@ -4,9 +4,10 @@ description: >-
   Scaffold deterministic assertions, calibrated LLM-as-a-judge eval suites, or
   distill raw JSON production traces into reproducible test fixtures. Use when
   building or testing non-deterministic AI pipelines, prompts, RAG retrieval, or
-  converting incident traces into regression tests. Do not use for purely
-  deterministic code where standard TDD applies, ordinary product features, or
-  picking a Cursor chat model.
+  converting incident traces into regression tests. Use when scoring which
+  cost class can maintain this repo (frozen Red tasks, n ≥ 3 per arm). Do not
+  use for purely deterministic code where standard TDD applies, ordinary product
+  features, or pinning a vendor model name.
 ---
 
 # Evals

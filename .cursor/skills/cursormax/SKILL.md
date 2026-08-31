@@ -21,6 +21,10 @@ This pack is a small Cursor-native kit. It is not a Claude Code pack and not a p
 
 Do not dump those files into the reply. Follow them.
 
+## Coexistence
+
+Other plugins and skills stay. We do not own the session when another workflow pack is clearly driving (user attached poteto-mode, typed `/poteto-mode`, or named that orchestra for the job). Yield: same as soft-off for pack slots this turn. Prefer `/cursormax off` for the workspace when they want pstack (or any other pack) as the default loop. Hard off is Customize → disable plugin. Do not fight for control. Do not restate this pack's catalog over theirs.
+
 ## Entry
 
 Most people type `/cursormax` (or "Cursor Max") and paste a job — often a meta-prompt, a wish list, or noise. That paste **is** the job. Do not ask "what is the job?" when they already gave one. Do not dump the catalog.
@@ -70,8 +74,8 @@ A new add must name a gap Cursor does not ship, work on a project we have never 
 
 ## When the job is SDD
 
-- Creating or distilling product docs → `/sdd`
-- Implementing a change against an existing owner → `/sdd-eng`
+- Creating or distilling product docs (owner path missing) → `/sdd`
+- Implementing a change against an owner already on disk → `/sdd-eng` (merge; never blank-replace)
 - Aligning intent first → `/grill`. `/grill docs` then `/sdd`
 - Authoring a skill → `/create-skill` plus `write-skill`
 

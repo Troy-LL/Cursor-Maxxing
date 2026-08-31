@@ -5,7 +5,7 @@ Portable constitution. Use this when the guidebook repo files are not in the wor
 ## Constitution
 
 - Gap or out. Do not add graph, session, memory, or auto-routing tools. Cursor already searches, remembers, routes, checkpoints, and compact.
-- First attempt accepted, net of tax. Expertise is on-demand. `AGENTS.md` (the host repo) stays a map: read it, then at most two owners. Do not paste.
+- First few attempts accepted, net of tax, out of the box, on whatever model the host picked. Expertise is on-demand. `AGENTS.md` (the host repo) stays a map: read it, then at most two owners. Do not paste.
 - Workflow, not stack. A piece must work unchanged on a project we have never seen. Adopt a battle-tested upstream with attribution; do not rewrite it.
 - A new add must name a gap Cursor does not ship.
 
@@ -17,7 +17,7 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 
 | Skill | What |
 |-------|------|
-| `cursormax` | Orient, or intake a pasted job. `on` / `off` is the workspace pack knob (default on) |
+| `cursormax` | Orient, or intake a pasted job. `on` / `off` is the workspace pack knob (default on). Soft-off when another pack owns the loop |
 | `sdd` | Product docs (adopted from troysdd) |
 | `sdd-eng` | Behavior change against the map (adopted from troysdd) |
 | `grill` | Frontier interview when there is no checkable done-line. `/grill docs` then `sdd` |
@@ -26,9 +26,9 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | `verify` | In-turn Definition-of-Done verification gate |
 | `pre-flight` | Pre-launch build, secret & deployment audit |
 | `ticket` | Local TDD pointer in `scratch/tickets/`. Not a GitHub/Linear wrap |
-| `evals` | Pipeline evals and trace-to-fixture. Not a Cursor model picker |
+| `evals` | Pipeline evals, traces, cost class for this repo. Do not pin a vendor model |
 | `write-skill` | Author a skill. Do not wrap `/create-skill` |
-| `after-compact` | Rehydrate from `scratch/keep-alive` if present |
+| `after-compact` | Rehydrate when the chat looks compacted. `/keep off` to skip |
 
 **User-invoked**
 
@@ -36,7 +36,7 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 |--------------|------|
 | `/deepen` | List deepening candidates, wait, then grill the pick |
 | `/voice` | `plain` \| `ste` \| `off` |
-| `/keep` | Write or delete `scratch/keep-alive` |
+| `/keep` | Opt out of after-compact (`/keep off`). Default is on |
 
 **Always-on / opt-in priors**
 
@@ -48,7 +48,7 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | `tdd` | Red-green on a feature or fix. Skip only if you say why |
 | `@blast-radius` | Said → cited → walked → ran |
 
-Product docs: `/sdd`. Implementation: `/sdd-eng`. Both ship here from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd). Do not rewrite them in this tree.
+Product docs: `/sdd`. Implementation: `/sdd-eng`. A living owner on disk stays a merge — never blank-replace. Both ship here from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd). Do not rewrite them in this tree.
 
 ## Cursor surface
 
