@@ -24,7 +24,7 @@ Research grounding:
 
 - **Runtime router skill** — rejected: wraps Auto, violates [001](001-native-first.md), and router evals show naive routers lose to constant policies.
 - **Ship tier table as fact** — rejected by Data Engineer: zero local traces exist; benchmark scores are not deployment evidence.
-- **Fold into `/cursormax` intake** — deferred: intake runs every job; blueprint is kickoff-scoped and would add tax to routine edits.
+- **Fold into `/unfurnished` intake** — deferred: intake runs every job; blueprint is kickoff-scoped and would add tax to routine edits.
 
 ## Council record
 

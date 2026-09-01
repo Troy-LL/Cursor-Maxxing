@@ -5,6 +5,9 @@
 - Date:
 - Model (picker name):
 - Cost class (included-cheap / included-standard / included-flagship / api-rate):
-- Tokens in / out (from usage dashboard):
 - Success: yes / no (dummy Red command exit 0)
+- User turns until accepted:
+- Tool calls (total):
+- Extra tool calls (not Grep/Glob/Read or the named native):
+- Tokens in / out (optional; skip if the dashboard is missing):
 - Notes (one line):

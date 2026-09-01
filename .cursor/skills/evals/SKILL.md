@@ -21,7 +21,7 @@ When testing an LLM pipeline, extraction task, or agent step:
 1. **Deterministic Bounds First**:
    - Schema validation (the project's schema library).
    - Tool call presence and parameter type checks.
-   - Latency thresholds and token/cost caps.
+   - Latency thresholds. Session length (user turns) and extra tool-call counts when the host does not show tokens.
    - Exact substring / regex negative assertions (e.g. no leaked system prompts or placeholder tokens).
 
 2. **Calibrated LLM-as-a-Judge**:

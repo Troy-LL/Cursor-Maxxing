@@ -20,7 +20,7 @@ Operator or user UI: poll, badges, empty copy, keyboard, retry, backoff, focus. 
 
 ## docs/eval.md
 
-Gold command and where it writes, sample floor, scrape, metric prefix, alert files. Omit if tests already fail the booleans. Gold stays rigid. Prompt text lives in `prompts/` as code. Dated scores live in `evals/`.
+Gold command and where it writes, sample floor, scrape (user turns and extra tool calls when tokens are missing), metric prefix, alert files. Omit if tests already fail the booleans. Gold stays rigid. Prompt text lives in `prompts/` as code. Dated scores live in `evals/`.
 
 ## docs/decisions/NNN-title.md
 
