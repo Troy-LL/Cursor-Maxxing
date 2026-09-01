@@ -8,8 +8,8 @@ People copy Claude Code maxxing packs into Cursor: graph indexes, extra grep, se
 
 ## Decision
 
-We will not add graph, session, memory, or auto-routing tools. Cursor Maxxing only fills jobs the IDE does not ship (review workflows, authoring rules, product SDD).
+We will not add graph, session, memory, or auto-routing tools. Unfurnished only fills jobs the IDE does not ship (review workflows, authoring rules, product SDD).
 
 ## Consequences
 
-`.cursor/` stays small: on-demand skills, a few knobs, short priors. Agents use built-in search and the session they are in. Someone coming from a Claude pack will still call this empty. That is the point. A new add has to name a gap Cursor does not cover, or it stays out.
+`.cursor/` stays small: on-demand skills, a few knobs, short priors. Agents use built-in search and the session they are in. Someone coming from a Claude pack will still call this empty. That is the point. The pack is named Unfurnished for that reason. The always-on prior exists to maximize those natives and pick one slot — not to clone a second toolchain or to mute ourselves because another plugin is installed. A new add has to name a gap Cursor does not cover, or it stays out.

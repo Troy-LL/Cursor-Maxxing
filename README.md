@@ -1,14 +1,18 @@
-# Cursor Maxxing
+# Unfurnished
 
-Cursor-native workflow pack. Install it and talk. You do not need to know the slash names. Not a Claude Code pack.
+Cursor-native workflow pack. Don't attach Claude furniture to Cursor. The room looks empty. That is the point. Was Cursor Maxxing.
+
+This is not a token-golf optimizer. It points Agent at Plan, Ask, Debug, Task, Grep, Browser, and compact — the Cursor plan you already pay for — instead of cloning graph, memory, or router furniture. Skills fill gaps the IDE does not ship. Install it and talk; slash names are optional. Other plugins may run alongside. Not a Claude Code pack.
+
+We landed t1-nook in-session (Red green, `docs/design.md` kept Keyboard and Retry, fixture restored red). That is one transcript, scored as user turns and extra tool calls — not a cost class, not n ≥ 3, not a 004 promote. Re-import the plugin or live chats still load the old `cursormax` cache.
 
 A few skills, a few knobs, a few short priors. Nothing that wraps something Cursor already ships. Stack-agnostic: same pack on a CLI, a SaaS, or a pipeline.
 
 ## Start here
 
 1. Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Each push to this repo updates the install.
-2. Chat. The pack is on. Docs, features, kickoff, verify, and ship can pull themselves. A job with no checkable done-line gets an interview. You do not need `/cursormax` first.
-3. **`/cursormax off`** mutes pack slots in this workspace (`scratch/cursormax-off`; do not commit). **`/cursormax on`** turns them back on. Customize → disable plugin is the hard off. Soft-off is the right default when another workflow pack (pstack / poteto-mode) should own the loop — we cannot stop other plugins, so we yield.
+2. Chat. The pack is on. Docs, features, kickoff, verify, and ship can pull themselves. A job with no checkable done-line gets an interview. You do not need `/unfurnished` first.
+3. **`/unfurnished off`** mutes pack slots in this workspace (`scratch/unfurnished-off`; do not commit). **`/unfurnished on`** turns them back on. Customize → disable plugin is the hard off. Other plugins may run alongside; use soft-off only when you want Unfurnished quiet.
 
 Open this repo only to edit the pack. If you already imported the plugin, do not also open this repo as the project — every skill loads twice.
 
@@ -16,13 +20,13 @@ Do not `npx` a Claude pack to get these files. Do not copy `.cursor/` by hand un
 
 Catalog: [`.cursor-plugin/marketplace.json`](.cursor-plugin/marketplace.json) (what Customize import reads). Plugin: [`.cursor-plugin/plugin.json`](.cursor-plugin/plugin.json).
 
-### `/cursormax` if you want it
+### `/unfurnished` if you want it
 
 | You type | What happens |
 |----------|--------------|
-| `/cursormax` alone | Orients. Reports if this workspace is soft-off. Fine. No job required. |
-| `/cursormax` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
-| `/cursormax off` / `on` | Workspace pack knob. Default is on (no file). Soft-off only — plugin skills may still list. |
+| `/unfurnished` alone | Orients. Reports if this workspace is soft-off. Fine. No job required. |
+| `/unfurnished` plus a job | Takes the paste (messy and meta prompts are fine), strips fluff, names the Cursor native, then works or asks one fork. |
+| `/unfurnished off` / `on` | Workspace pack knob. Default is on (no file). Soft-off only — plugin skills may still list. |
 
 ## What fires without you typing it
 
@@ -41,7 +45,7 @@ The test: could the agent usefully reach for this on its own? If yes, it is mode
 | `evals` | Pipelines, traces into fixtures, cost class for this repo. Do not pin a vendor model |
 | `write-skill` | Authoring a skill |
 | `after-compact` | Chat was compacted. Opt out with `/keep off` |
-| `cursormax` | They asked what this pack is, or pasted a job after `/cursormax` |
+| `unfurnished` | They asked what this pack is, or pasted a job after `/unfurnished` |
 
 `tdd` is the same idea as a prior: feature or fix, not a throwaway script.
 
@@ -54,18 +58,18 @@ These must not run unprompted.
 | `/deepen` | List deepening candidates, wait, grill the pick |
 | `/voice` | `plain` \| `ste` \| `off` |
 | `/keep` | Opt out of after-compact (`/keep off`). Default is on |
-| `/cursormax off` / `on` | Mute or restore pack slots in this workspace |
+| `/unfurnished off` / `on` | Mute or restore pack slots in this workspace |
 
 Product docs are **`sdd`**. Implementation is **`sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
 
-Priors in `.cursor/rules/`: `yagni-bias` and `cursormax-bias` are always on (~40 words each). `@yagni`, `tdd`, and `@blast-radius` attach when the task matches, or when you `@` them.
+Priors in `.cursor/rules/`: `yagni-bias` (~40 words) and `unfurnished-bias` (natives + one slot). Both always on. `@yagni`, `tdd`, and `@blast-radius` attach when the task matches, or when you `@` them.
 
 ## Why it looks like this
 
 Three decisions do most of the work.
 
 - **Native first.** Claude Code packs add graph indexes, memory, session files, routers, and overnight loops because that host needs them. Cursor already searches, remembers, routes, checkpoints, and compacts. Codegraph went out for that reason. A new add has to name a gap the IDE does not cover. → [001](docs/decisions/001-native-first.md)
-- **Few first shots, not token golf.** Efficiency here means the first few attempts are accepted, out of the box, on whatever model the host picked. Not one-shot perfection. → [002](docs/decisions/002-first-shot-efficiency.md)
+- **Few first shots, not token golf.** Efficiency here means the first few attempts are accepted, out of the box, on whatever model the host picked. Not one-shot perfection. Cursor often does not show tokens — we count shorter sessions and fewer extra tool calls. → [002](docs/decisions/002-first-shot-efficiency.md)
 - **Workflow, not stack.** We do not know what you are building and do not need to. Everything works the same on a Rust CLI, a Next.js SaaS, or a data pipeline. Stack guides and framework integrations stay out. → [003](docs/decisions/003-workflow-not-stack.md)
 
 <details>

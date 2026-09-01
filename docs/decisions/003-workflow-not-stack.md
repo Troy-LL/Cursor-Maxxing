@@ -6,7 +6,7 @@ Status: Accepted
 
 We do not know the user's stack. We never will. A Supabase guide, a Stripe integration skill, or a Postgres optimization prompt assumes a specific project. On any other project, stack-bound tools are dead context—worse, wrong context that taxes the session window ([002-first-shot-efficiency.md](002-first-shot-efficiency.md)) for tools that are not there.
 
-What survives every project is the **workflow layer**: reviewing, planning, frontier questioning, red-green verification, adversarial auditing, pre-flight launch checks, compact rehydration, and intent alignment. That is the only layer Cursor Maxxing ships.
+What survives every project is the **workflow layer**: reviewing, planning, frontier questioning, red-green verification, adversarial auditing, pre-flight launch checks, compact rehydration, and intent alignment. That is the only layer Unfurnished ships.
 
 When community workflow skills are already battle-tested in the wild, rewriting them from scratch throws away edge-case fixes and isolates us from upstream maintenance. Extraction was designed as an escape hatch for salvaging good ideas from broken packs, not as a default intake strategy.
 
@@ -14,7 +14,7 @@ When community workflow skills are already battle-tested in the wild, rewriting 
 
 ### 1. The Workflow Litmus Test
 
-Cursor Maxxing ships only stack-agnostic workflow tools. A skill, command, or rule must work identically whether the project is a Rust CLI, a Next.js SaaS, a Python data pipeline, or embedded firmware.
+Unfurnished ships only stack-agnostic workflow tools. A skill, command, or rule must work identically whether the project is a Rust CLI, a Next.js SaaS, a Python data pipeline, or embedded firmware.
 
 A stack-agnostic skill remains specific not through tool names, but through:
 - **Process sequence**: Strict operational order (e.g. observe failing test before code, 4-gate verification before turn yield).
@@ -57,6 +57,6 @@ Every future intake or audit sweep must answer two questions:
 
 ## Consequences
 
-- Cursor Maxxing remains a universal pack with zero dead-weight stack context.
+- Unfurnished remains a universal pack with zero dead-weight stack context.
 - App-specific rules and framework guides belong in project-level `.cursor/rules/` (via `/create-rule` or `cursor-directory`), never in this pack.
 - Upstream improvements flow directly into adopted skills; rotting upstreams are evicted or extracted on failure.

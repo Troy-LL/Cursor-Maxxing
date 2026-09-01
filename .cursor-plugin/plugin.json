@@ -1,15 +1,15 @@
 {
-  "name": "cursormax",
-  "displayName": "Cursor Maxxing",
-  "version": "1.1.0",
-  "description": "Workflow pack: spec docs, implement against the map, verify before you yield, pre-flight before you ship. Not a Claude Code pack.",
+  "name": "unfurnished",
+  "displayName": "Unfurnished",
+  "version": "1.2.0",
+  "description": "Workflow pack: spec docs, implement against the map, verify before you yield, pre-flight before you ship. Don't attach Claude furniture to Cursor.",
   "author": {
     "name": "Troy"
   },
   "homepage": "https://github.com/Troy-LL/Cursor-Maxxing",
   "repository": "https://github.com/Troy-LL/Cursor-Maxxing",
   "keywords": [
-    "cursormax",
+    "unfurnished",
     "native-first",
     "first-shot",
     "skills",
@@ -25,7 +25,7 @@
   ],
   "skills": "./.cursor/skills",
   "commands": [
-    "./.cursor/commands/cursormax.md",
+    "./.cursor/commands/unfurnished.md",
     "./.cursor/commands/voice.md",
     "./.cursor/commands/keep.md",
     "./.cursor/commands/after-compact.md",
@@ -42,7 +42,7 @@
   ],
   "rules": [
     "./.cursor/rules/yagni-bias.mdc",
-    "./.cursor/rules/cursormax-bias.mdc",
+    "./.cursor/rules/unfurnished-bias.mdc",
     "./.cursor/rules/yagni.mdc",
     "./.cursor/rules/tdd.mdc",
     "./.cursor/rules/blast-radius.mdc"
