@@ -9,7 +9,7 @@ description: >-
 
 # Ticket
 
-A ticket is a TDD pointer, not a product tracker. Open items live in `scratch/tickets/` (do not commit, do not map). Durable decisions still go through `/sdd` as one ADR.
+A ticket is a TDD pointer, not a product tracker. Open items live in `scratch/tickets/` (do not commit, do not map, even if they asked). Durable decisions still go through `/sdd` as one ADR.
 
 ## Open
 
