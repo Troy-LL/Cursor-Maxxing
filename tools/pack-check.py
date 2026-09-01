@@ -1,4 +1,4 @@
-"""Deterministic contracts for the Cursor Maxxing pack. Rerun anytime."""
+"""Deterministic contracts for the Unfurnished pack. Rerun anytime."""
 from __future__ import annotations
 
 import argparse
@@ -29,7 +29,7 @@ SOFT_OFF_SLOTS = (
 SKILLS = (
     "after-compact",
     "blueprint",
-    "cursormax",
+    "unfurnished",
     "deepen",
     "evals",
     "grill",
@@ -45,7 +45,7 @@ SKILLS = (
 COMMANDS = (
     "after-compact",
     "blueprint",
-    "cursormax",
+    "unfurnished",
     "deepen",
     "evals",
     "grill",
@@ -61,7 +61,7 @@ COMMANDS = (
 
 RULES = (
     "blast-radius.mdc",
-    "cursormax-bias.mdc",
+    "unfurnished-bias.mdc",
     "tdd.mdc",
     "yagni-bias.mdc",
     "yagni.mdc",
@@ -78,14 +78,14 @@ def check(name: str, ok: bool, detail: str) -> dict:
 
 def run_checks(*, strict_install: bool) -> list[dict]:
     rows: list[dict] = []
-    bias = text(CURSOR / "rules" / "cursormax-bias.mdc")
+    bias = text(CURSOR / "rules" / "unfurnished-bias.mdc")
     after = text(CURSOR / "skills" / "after-compact" / "SKILL.md")
     keep = text(CURSOR / "commands" / "keep.md")
     occasion = text(CURSOR / "skills" / "sdd" / "occasion.md")
     sdd_eng = text(CURSOR / "skills" / "sdd-eng" / "SKILL.md")
     sdd = text(CURSOR / "skills" / "sdd" / "SKILL.md")
-    cm = text(CURSOR / "skills" / "cursormax" / "SKILL.md")
-    ref = text(CURSOR / "skills" / "cursormax" / "reference.md")
+    cm = text(CURSOR / "skills" / "unfurnished" / "SKILL.md")
+    ref = text(CURSOR / "skills" / "unfurnished" / "reference.md")
     agents = text(ROOT / "AGENTS.md")
     eval_md = text(ROOT / "docs" / "eval.md")
     t1_task = text(ROOT / "docs" / "evals" / "dummies" / "t1-nook" / "EVAL-TASK.md")
@@ -96,21 +96,70 @@ def run_checks(*, strict_install: bool) -> list[dict]:
         check(
             "bias-file-on-disk",
             "File on disk" in bias and "Docs → sdd" not in bias,
-            "cursormax-bias routes living owners to sdd-eng",
+            "unfurnished-bias routes living owners to sdd-eng",
         )
     )
     rows.append(
         check(
             "bias-soft-off-slots",
             all(s in bias for s in SOFT_OFF_SLOTS),
-            "soft-off / yield lists every model-invoked pack slot",
+            "soft-off lists every model-invoked pack slot",
         )
     )
     rows.append(
         check(
-            "bias-coexist-yield",
-            "poteto" in bias.lower() or "another workflow" in bias.lower(),
-            "bias yields when another workflow pack is driving",
+            "bias-alongside",
+            "alongside" in bias.lower() and "poteto" not in bias.lower(),
+            "bias sits beside other plugins; does not name poteto",
+        )
+    )
+    rows.append(
+        check(
+            "bias-scratch-even-if-asked",
+            "even if they asked" in bias.lower()
+            and "scratch/" in bias
+            and "do-not-map" in bias.lower().replace(" ", "").replace("`", ""),
+            "always-on forbids mapping scratch even if they asked",
+        )
+    )
+    rows.append(
+        check(
+            "bias-yield-attached",
+            "attached another pack" in bias.lower() and "poteto" not in bias.lower(),
+            "this-turn attached skill skips pack slots; does not name poteto",
+        )
+    )
+    rows.append(
+        check(
+            "bias-do-not-wrap",
+            "do not wrap" in bias.lower() and "do not wrap" in cm.lower(),
+            "yielded turn does not wrap the other pack's tools",
+        )
+    )
+    rows.append(
+        check(
+            "bias-map-before-grep",
+            "before a repo-wide" in bias.lower()
+            and "do not open" in bias.lower()
+            and "do not offer" in bias.lower()
+            and "do not pull tdd" in bias.lower(),
+            "always-on re-reads AGENTS.md before tree search; no tdd on attached pack",
+        )
+    )
+    rows.append(
+        check(
+            "sdd-eng-load-map",
+            "map.md" in sdd_eng.lower() and "AGENTS.md" in sdd_eng,
+            "sdd-eng reads map.md when the owner is AGENTS.md",
+        )
+    )
+    rows.append(
+        check(
+            "bias-maximize-natives",
+            "grep" in bias.lower()
+            and "extra-probe" in bias.lower()
+            and "mcp" in bias.lower(),
+            "always-on maximizes Cursor natives and skips extra probes and MCP clones",
         )
     )
     rows.append(
@@ -219,12 +268,30 @@ def run_checks(*, strict_install: bool) -> list[dict]:
     )
     rows.append(
         check(
+            "002-always-on-natives",
+            "always-on" in adr002.lower()
+            and ("natives" in adr002.lower() or "inferential" in adr002.lower()),
+            "002 states always-on is for natives and accurate slots",
+        )
+    )
+    rows.append(
+        check(
             "pack-no-mint-glossary",
             "do not mint" in owners.lower() and "glossary.md" in owners.lower(),
             "owners.md forbids minting a glossary file",
         )
     )
-    reference = text(CURSOR / "skills" / "cursormax" / "reference.md")
+    rows.append(
+        check(
+            "map-scratch-even-if-asked",
+            "even if they asked" in text(CURSOR / "skills" / "sdd" / "map.md").lower()
+            and "scratch/tickets" in text(CURSOR / "skills" / "sdd" / "map.md").lower()
+            and "even if they asked" in sdd_eng.lower()
+            and "do not map scratch" in sdd_eng.lower(),
+            "scratch stays unmapped even if they asked",
+        )
+    )
+    reference = text(CURSOR / "skills" / "unfurnished" / "reference.md")
     rows.append(
         check(
             "catalog-living-owner",
@@ -234,16 +301,23 @@ def run_checks(*, strict_install: bool) -> list[dict]:
     )
     rows.append(
         check(
-            "cursormax-not-pstack",
+            "unfurnished-not-pstack",
             "not a pstack" in cm.lower() or "poteto-mode orchestra" in cm.lower(),
-            "cursormax states it is not a pstack orchestra",
+            "unfurnished states it is not a pstack orchestra",
         )
     )
     rows.append(
         check(
-            "cursormax-coexist",
-            "coexist" in cm.lower() or "another workflow" in cm.lower() or "yield" in cm.lower(),
-            "cursormax skill documents yielding to other packs",
+            "unfurnished-coexist",
+            "alongside other" in cm.lower(),
+            "unfurnished skill runs alongside other packs",
+        )
+    )
+    rows.append(
+        check(
+            "unfurnished-no-sdd-pull",
+            "already the slot" in cm.lower() or "do not use when /sdd" in cm.lower(),
+            "unfurnished does not pull on every sdd-eng job",
         )
     )
     rows.append(
@@ -258,6 +332,21 @@ def run_checks(*, strict_install: bool) -> list[dict]:
             "eval-t1-nook",
             "t1-nook" in eval_md,
             "eval.md names t1-nook as qualifying dummy",
+        )
+    )
+    rows.append(
+        check(
+            "eval-session-tools",
+            "tool call" in eval_md.lower()
+            and ("turn" in eval_md.lower() or "session" in eval_md.lower()),
+            "eval.md scores session length and extra tool calls when tokens are missing",
+        )
+    )
+    rows.append(
+        check(
+            "eval-restore-dummy",
+            "restore" in eval_md.lower() and "coming soon" in eval_md.lower(),
+            "eval.md restores t1-nook to red after a guidebook landing probe",
         )
     )
     rows.append(
@@ -286,6 +375,36 @@ def run_checks(*, strict_install: bool) -> list[dict]:
         rows.append(check(f"rule-{name}", p.is_file(), str(p)))
 
     plugin = json.loads(text(PLUGIN) or "{}")
+    rows.append(
+        check(
+            "plugin-id-unfurnished",
+            plugin.get("name") == "unfurnished",
+            str(plugin.get("name")),
+        )
+    )
+    rows.append(
+        check(
+            "plugin-display-unfurnished",
+            plugin.get("displayName") == "Unfurnished",
+            str(plugin.get("displayName")),
+        )
+    )
+    rows.append(
+        check(
+            "brand-unfurnished",
+            text(ROOT / "README.md").startswith("# Unfurnished"),
+            "README title is Unfurnished",
+        )
+    )
+    rows.append(
+        check(
+            "bias-soft-off-path",
+            "unfurnished-off" in bias
+            and "cursormax-off" in bias
+            and "Grep" in bias,
+            "soft-off honors unfurnished-off and cursormax-off",
+        )
+    )
     cmd_list = plugin.get("commands") or []
     rule_list = plugin.get("rules") or []
     for name in COMMANDS:
@@ -322,11 +441,19 @@ def run_checks(*, strict_install: bool) -> list[dict]:
     stale = False
     detail = "no cache"
     if cache.is_dir():
-        caches = sorted(cache.glob("cursormax/*/"), key=lambda p: p.stat().st_mtime, reverse=True)
+        plugin_caches = list(cache.glob("unfurnished/*/")) + list(cache.glob("cursormax/*/"))
+        caches = sorted(plugin_caches, key=lambda p: p.stat().st_mtime, reverse=True)
         if caches:
-            c_bias = text(caches[0] / ".cursor" / "rules" / "cursormax-bias.mdc")
-            stale = "Docs → sdd" in c_bias or "File on disk" not in c_bias
-            detail = str(caches[0])
+            newest = caches[0]
+            c_bias = text(newest / ".cursor" / "rules" / "unfurnished-bias.mdc") or text(
+                newest / ".cursor" / "rules" / "cursormax-bias.mdc"
+            )
+            stale = (
+                newest.parent.name != "unfurnished"
+                or "Docs → sdd" in c_bias
+                or "File on disk" not in c_bias
+            )
+            detail = str(newest)
     if strict_install:
         rows.append(
             check(
@@ -482,6 +609,47 @@ class TestNameSeating(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("do not map a glossary", mapping.lower())
+        # F: "put scratch in AGENTS.md" → still unmapped, even if they asked
+        self.assertIn("even if they asked", mapping.lower())
+        self.assertIn("scratch/tickets", mapping.lower())
+        self.assertIn("even if they asked", sdd_eng)
+        self.assertIn("do not map scratch", sdd_eng)
+
+    def test_live_mitigations(self) -> None:
+        """Failures from playground chat 1338ba42: map scratch, fusion, extra-probe."""
+        bias = (ROOT / ".cursor" / "rules" / "unfurnished-bias.mdc").read_text(
+            encoding="utf-8"
+        ).lower()
+        sdd_eng = (ROOT / ".cursor" / "skills" / "sdd-eng" / "SKILL.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        cm = (ROOT / ".cursor" / "skills" / "unfurnished" / "SKILL.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        mapping = (ROOT / ".cursor" / "skills" / "sdd" / "map.md").read_text(
+            encoding="utf-8"
+        ).lower()
+        # Always-on must fire without /sdd: do not bullet scratch; do not strip the prior
+        self.assertIn("scratch/", bias)
+        self.assertIn("even if they asked", bias)
+        self.assertIn("do not delete", bias)
+        self.assertIn("do-not-map", bias.replace(" ", "").replace("`", ""))
+        # Attached other orchestra this turn → skip slots; do not name poteto
+        self.assertIn("attached another pack", bias)
+        self.assertNotIn("poteto", bias)
+        # Living AGENTS.md edits load map.md
+        self.assertIn("agents.md", sdd_eng)
+        self.assertIn("map.md", sdd_eng)
+        self.assertIn("do not delete", mapping or sdd_eng)
+        # Coexistence: skip slots when another pack's skill is attached
+        self.assertIn("attached another pack", cm)
+        # Live 31023fcd: re-read AGENTS.md before tree search; honor skip lines; no rewrite offer
+        self.assertIn("before a repo-wide", bias)
+        self.assertIn("do not open", bias)
+        self.assertIn("do not offer", bias)
+        self.assertIn("do not pull tdd", bias)
+        self.assertIn("do not wrap", bias)
+        self.assertIn("do not wrap", cm)
 
 
 if __name__ == "__main__":

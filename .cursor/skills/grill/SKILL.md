@@ -6,7 +6,8 @@ description: >-
   or they say grill / grill docs. Do not use for cheap reversible edits, after
   they already confirmed a shared understanding, when they named a feature or
   fix against an existing map (that is sdd-eng), or when they asked to deepen
-  architecture without typing deepen (that is /deepen).
+  architecture without typing deepen (that is /deepen). Do not use when the
+  user attached another pack's skill this turn.
 ---
 
 # Grill

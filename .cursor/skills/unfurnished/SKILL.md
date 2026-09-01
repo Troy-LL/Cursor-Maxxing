@@ -1,17 +1,18 @@
 ---
-name: cursormax
+name: unfurnished
 description: >-
-  Orients to the Cursor Maxxing pack and runs a job that arrives after
-  /cursormax — including messy, meta, or vague prompts. Use when the user
-  says cursormax, /cursormax, Cursor Max, asks what this pack ships, or
-  asks what to type next. Use when doing /sdd or /sdd-eng with this pack
-  installed so product docs stay on the map. Do not use for a one-line
-  edit, rename, or format pass that never invoked this pack.
+  Orients to the Unfurnished pack and runs a job that arrives after
+  /unfurnished — including messy, meta, or vague prompts. Use when the user
+  says unfurnished, /unfurnished, cursormax, /cursormax, Cursor Max, Cursor
+  Maxxing, asks what this pack ships, or asks what to type next. Do not use
+  for a one-line edit, rename, or format pass that never invoked this pack.
+  Do not use when /sdd or /sdd-eng is already the slot — those skills load
+  themselves.
 ---
 
-# Cursor Maxxing
+# Unfurnished
 
-This pack is a small Cursor-native kit. It is not a Claude Code pack and not a pstack / poteto-mode orchestra.
+This pack is a small Cursor-native kit. It is not a Claude Code pack and not a pstack / poteto-mode orchestra. Don't attach Claude furniture to Cursor. The room looks empty. That is the point.
 
 ## Load
 
@@ -23,17 +24,17 @@ Do not dump those files into the reply. Follow them.
 
 ## Coexistence
 
-Other plugins and skills stay. We do not own the session when another workflow pack is clearly driving (user attached poteto-mode, typed `/poteto-mode`, or named that orchestra for the job). Yield: same as soft-off for pack slots this turn. Prefer `/cursormax off` for the workspace when they want pstack (or any other pack) as the default loop. Hard off is Customize → disable plugin. Do not fight for control. Do not restate this pack's catalog over theirs.
+Other plugins and skills stay. This pack runs alongside other plugins. If they attached another pack's skill this turn, skip pack slots (same list as soft-off), do not pull tdd, and do not wrap their tools. Do not also run sdd-eng or grill on that job. Their Grep is theirs. Do not fight for control. Do not duplicate a job another pack is already doing. Do not restate this pack's catalog over theirs. `/unfurnished off` mutes Unfurnished for the workspace when they want the other pack alone. Hard off is Customize → disable plugin.
 
 ## Entry
 
-Most people type `/cursormax` (or "Cursor Max") and paste a job — often a meta-prompt, a wish list, or noise. That paste **is** the job. Do not ask "what is the job?" when they already gave one. Do not dump the catalog.
+Most people type `/unfurnished` and paste a job — often a meta-prompt, a wish list, or noise. That paste **is** the job. Do not ask "what is the job?" when they already gave one. Do not dump the catalog.
 
 | What they sent | Do this |
 |----------------|---------|
 | Exactly `off` | Already handled in the command. Do not Intake. |
 | Exactly `on` | Already handled in the command. Do not Intake. |
-| Slash only, no job | Orient in one short line. Report soft-off if `scratch/cursormax-off` exists. Ask for the job. Stop. |
+| Slash only, no job | Orient in one short line. Report soft-off if `scratch/unfurnished-off` exists. Ask for the job. Stop. |
 | Slash + any job text | Run **Intake**, then **Offer**, then work or wait. Do not treat leftover `on`/`off` inside a sentence as the knob. |
 
 ### Intake
@@ -67,8 +68,8 @@ When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `
 | Kind | Use |
 |------|-----|
 | Skill | Workflow. Host `.cursor/skills/` for new ones; this pack's skills arrive via the plugin |
-| Command | Knob. `/voice`, `/keep`, `/cursormax on` \| `off` |
-| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` and `cursormax-bias` are always-on. |
+| Command | Knob. `/voice`, `/keep`, `/unfurnished on` \| `off` |
+| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` and `unfurnished-bias` are always-on. |
 
 A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No stack skill. `/sdd` and `/sdd-eng` are adopted from troysdd — edit upstream, then re-adopt.
 
@@ -79,7 +80,7 @@ A new add must name a gap Cursor does not ship, work on a project we have never 
 - Aligning intent first → `/grill`. `/grill docs` then `/sdd`
 - Authoring a skill → `/create-skill` plus `write-skill`
 
-Park thinking in `scratch/`. Do not map it. Do not commit it.
+Park thinking in `scratch/`. Do not map it, even if they asked. Do not commit it.
 
 ## Done
 

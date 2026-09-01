@@ -1,4 +1,4 @@
-# Cursor Maxxing pack
+# Unfurnished pack
 
 Portable constitution. Use this when the guidebook repo files are not in the workspace (plugin install). If `docs/decisions/001-native-first.md` exists here, prefer those owners over this file.
 
@@ -17,7 +17,7 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 
 | Skill | What |
 |-------|------|
-| `cursormax` | Orient, or intake a pasted job. `on` / `off` is the workspace pack knob (default on). Soft-off when another pack owns the loop |
+| `unfurnished` | Orient, or intake a pasted job. `on` / `off` is the workspace pack knob (default on). Runs alongside other plugins |
 | `sdd` | Product docs (adopted from troysdd) |
 | `sdd-eng` | Behavior change against the map (adopted from troysdd) |
 | `grill` | Frontier interview when there is no checkable done-line. `/grill docs` then `sdd` |
@@ -43,7 +43,7 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | Prior | What |
 |-------|------|
 | `yagni-bias` | Always-on, ~40 words |
-| `cursormax-bias` | Always-on. Pack is on unless `scratch/cursormax-off` exists |
+| `unfurnished-bias` | Always-on. Maximize natives, one slot, no extra probes. On unless `scratch/unfurnished-off` exists. Alongside other plugins. If they attached another pack's skill this turn: skip slots, do not pull tdd, do not wrap their tools. Do not map scratch |
 | `@yagni` | 7-rung ladder |
 | `tdd` | Red-green on a feature or fix. Skip only if you say why |
 | `@blast-radius` | Said → cited → walked → ran |
@@ -69,7 +69,7 @@ Type the native. Do not wrap it.
 | `/create-hook`, `hooks.json` | Hard stop, not a rule |
 | Explore, Grep, Glob, Read | Find code. No graph plugin. |
 
-`/cursormax` offers the one or two rows that match. It does not pick. It does not stay on.
+`/unfurnished` offers the one or two rows that match. It does not pick. It does not stay on.
 
 ## Task matrix
 

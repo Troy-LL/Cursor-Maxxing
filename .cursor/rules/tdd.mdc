@@ -1,5 +1,5 @@
 ---
-description: Use when implementing a feature or a bug fix — failing test first. Do not use for throwaway scripts, generated files, or config-only edits.
+description: Use when implementing a feature or a bug fix — failing test first. Do not use for throwaway scripts, generated files, or config-only edits. Do not use when the user attached another pack's skill this turn.
 alwaysApply: false
 ---
 
