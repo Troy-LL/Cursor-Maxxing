@@ -24,7 +24,7 @@ Do not dump those files into the reply. Follow them.
 
 ## Coexistence
 
-Other plugins and skills stay. This pack runs alongside other plugins. If they attached another pack's skill this turn, skip pack slots (same list as soft-off), do not pull tdd, and do not wrap their tools. Do not also run sdd-eng or grill on that job. Their Grep is theirs. Do not fight for control. Do not duplicate a job another pack is already doing. Do not restate this pack's catalog over theirs. `/unfurnished off` mutes Unfurnished for the workspace when they want the other pack alone. Hard off is Customize → disable plugin.
+Other plugins and skills stay. This pack runs alongside other plugins. If they attached another pack's skill this turn, skip pack slots (same list as soft-off), do not pull tdd, and do not wrap their tools. Do not restate this pack's catalog over theirs. `/unfurnished off` mutes Unfurnished for the workspace when they want the other pack alone. Hard off is Customize → disable plugin.
 
 ## Entry
 
@@ -41,46 +41,28 @@ Most people type `/unfurnished` and paste a job — often a meta-prompt, a wish 
 
 From the paste, keep the real ask. Drop role-play, "act as", persona stacks, tool inventories, and filler. Restate the job in one sentence before you branch. If you cannot name a checkable done-line, intent is not locked — go to `/grill` (or offer Plan once). Do not invent scope they did not state.
 
-Then apply the priors this pack already ships: `yagni-bias` is on; for a feature or fix use `tdd` (red before theory); for a claim that might break neighbors use `@blast-radius` (prove by running). End a multi-file change with `verify` when the job is "done."
+The priors this pack ships are already on or attach on match (`yagni-bias`, `tdd`, `@blast-radius`). Do not restate them.
 
 ### Offer
 
-Name the pack slot and the Cursor native for this job. First matching row wins, cheaper first. If they already named the native, skip the offer and do that. Otherwise offer the matching fork once. Wait. Do not pick. Do not re-offer every turn.
+Name the one Cursor native that fits (the `reference.md` Cursor surface table has the list; do not paste it). If they already named it, do that. Otherwise offer the fork once — this chat, or that native — and wait. Do not pick. Do not re-offer every turn. Do not wrap the native. Do not spawn a named-agent roster.
 
-| Job | This chat | Native to type |
-|-----|-----------|----------------|
-| Cheap reversible edit | Yes | Stay. No skill. |
-| Intent not locked | No | `/grill`, or switch to Plan |
-| Multi-file implement | Ask | This chat, or Task (`/create-subagent`) |
-| Spawn workers | Ask | Task. Name the type from the matrix. |
-| Parallel attempts | No | `/best-of-n` + `/worktree` |
-| Need a red repro | No | Debug |
-| Overnight / unattended | No | `/loop`, Cloud Agents |
-| Review a diff | `thermonuclear` | Bugbot, Security Review |
-| What can I type? | — | `reference.md` Cursor surface. Do not paste it. |
+Which pack skill runs is not decided here: the matching skill pulls itself from its own description (ADR 006). If none matches, none runs.
 
-This is an offer, not a mode. Do not wrap those natives. Do not spawn a named-agent roster. Do not re-read a router skill for every turn.
-
-When they pick Task: name the `subagent_type` from `reference.md` Task matrix. `inherit` the model unless they named one. If they named a slug Task does not list, say so. Write the `prompt` from the Task prompt contract. Do not invent a named agent.
+When they pick Task: name the `subagent_type` from the `reference.md` Task matrix, `inherit` the model unless they named one, and write the `prompt` from the Task prompt contract. Do not invent a named agent.
 
 ## Slots
 
 | Kind | Use |
 |------|-----|
-| Skill | Workflow. Host `.cursor/skills/` for new ones; this pack's skills arrive via the plugin |
-| Command | Knob. `/voice`, `/keep`, `/unfurnished on` \| `off` |
-| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` and `unfurnished-bias` are always-on. |
+| Skill | Workflow. `/<skill>` invokes it; there is no command twin (ADR 008). Host `.cursor/skills/` for new ones |
+| Command | Knob with state. `/voice`, `/keep`, `/unfurnished on` \| `off` |
+| Rule | Constraint. `@yagni`, `tdd`, `@blast-radius`. `yagni-bias` and `unfurnished-bias` are always-on |
+| Hook | Hard fence. `.cursor/hooks/fence.py` (ADR 007) |
 
-A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No stack skill. `/sdd` and `/sdd-eng` are adopted from troysdd — edit upstream, then re-adopt.
+A new add must name a gap Cursor does not ship, work on a project we have never seen, and beat a rewrite if a battle-tested upstream already exists. No router. No second marketplace. No stack skill. No review skill. `/sdd` and `/sdd-eng` are adopted from troysdd — edit upstream, then re-adopt.
 
-## When the job is SDD
-
-- Creating or distilling product docs (owner path missing) → `/sdd`
-- Implementing a change against an owner already on disk → `/sdd-eng` (merge; never blank-replace)
-- Aligning intent first → `/grill`. `/grill docs` then `/sdd`
-- Authoring a skill → `/create-skill` plus `write-skill`
-
-Park thinking in `scratch/`. Do not map it, even if they asked. Do not commit it.
+Scratch and living-owner fences: the kernel (`unfurnished-bias`) owns them. Do not restate them here.
 
 ## Done
 

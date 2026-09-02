@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -20,7 +22,6 @@ SOFT_OFF_SLOTS = (
     "blueprint",
     "ticket",
     "after-compact",
-    "thermonuclear",
     "pre-flight",
     "evals",
     "write-skill",
@@ -36,28 +37,13 @@ SKILLS = (
     "pre-flight",
     "sdd",
     "sdd-eng",
-    "thermonuclear",
     "ticket",
     "verify",
     "write-skill",
 )
 
-COMMANDS = (
-    "after-compact",
-    "blueprint",
-    "unfurnished",
-    "deepen",
-    "evals",
-    "grill",
-    "keep",
-    "pre-flight",
-    "sdd",
-    "sdd-eng",
-    "thermonuclear",
-    "ticket",
-    "verify",
-    "voice",
-)
+# Knobs only (ADR 008). A skill is already `/<skill>`.
+COMMANDS = ("unfurnished", "keep", "voice")
 
 RULES = (
     "blast-radius.mdc",
@@ -84,9 +70,14 @@ def run_checks(*, strict_install: bool) -> list[dict]:
     occasion = text(CURSOR / "skills" / "sdd" / "occasion.md")
     sdd_eng = text(CURSOR / "skills" / "sdd-eng" / "SKILL.md")
     sdd = text(CURSOR / "skills" / "sdd" / "SKILL.md")
+    grill = text(CURSOR / "skills" / "grill" / "SKILL.md")
+    blueprint = text(CURSOR / "skills" / "blueprint" / "SKILL.md")
+    verify = text(CURSOR / "skills" / "verify" / "SKILL.md")
+    preflight = text(CURSOR / "skills" / "pre-flight" / "SKILL.md")
     cm = text(CURSOR / "skills" / "unfurnished" / "SKILL.md")
     ref = text(CURSOR / "skills" / "unfurnished" / "reference.md")
     agents = text(ROOT / "AGENTS.md")
+    adr006 = text(ROOT / "docs" / "decisions" / "006-kernel-not-slot-map.md")
     eval_md = text(ROOT / "docs" / "eval.md")
     t1_task = text(ROOT / "docs" / "evals" / "dummies" / "t1-nook" / "EVAL-TASK.md")
     t1_page = text(ROOT / "docs" / "evals" / "dummies" / "t1-nook" / "page.py")
@@ -94,9 +85,81 @@ def run_checks(*, strict_install: bool) -> list[dict]:
 
     rows.append(
         check(
-            "bias-file-on-disk",
-            "File on disk" in bias and "Docs → sdd" not in bias,
-            "unfurnished-bias routes living owners to sdd-eng",
+            "bias-kernel-not-slot-map",
+            all(
+                p not in bias
+                for p in (
+                    "Kickoff →",
+                    "File on disk",
+                    "No checkable done-line",
+                    "Mint a durable",
+                    "Multi-file done",
+                    "Ship →",
+                )
+            )
+            and "Docs → sdd" not in bias
+            and "do not dump the catalog" in bias.lower()
+            and "workflow runtime" in bias.lower(),
+            "always-on is a kernel; slot routing is not in the prior",
+        )
+    )
+    rows.append(
+        check(
+            "skills-hold-slot-triggers",
+            "no checkable done-line" in grill.lower()
+            and "kickoff" in blueprint.lower()
+            and "file already on disk" in sdd_eng.lower()
+            and "adr only when" in " ".join(sdd.split()).lower()
+            and "multi-file" in verify.lower()
+            and "ready to ship" in preflight.lower(),
+            "skill descriptions still pull the slots the kernel dropped",
+        )
+    )
+    rows.append(
+        check(
+            "adr-006-kernel",
+            "We will" in adr006
+            and "006-kernel-not-slot-map.md" in agents
+            and "workflow runtime" in adr006.lower(),
+            "006 is mapped; always-on is not a frozen slot map",
+        )
+    )
+    hooks = json.loads(text(CURSOR / "hooks.json") or "{}")
+    hook_cmds = [h.get("command", "") for ev in (hooks.get("hooks") or {}).values() for h in ev]
+    rows.append(
+        check(
+            "fence-hook-wired",
+            (CURSOR / "hooks" / "fence.py").is_file()
+            and "preToolUse" in (hooks.get("hooks") or {})
+            and "beforeShellExecution" in (hooks.get("hooks") or {})
+            and all("fence.py" in c for c in hook_cmds)
+            and "007-hooks-for-hard-fences.md" in agents,
+            "ADR 007: fence.py runs on Write and on git add/commit; 007 mapped",
+        )
+    )
+    cmd_dir = sorted(p.stem for p in (CURSOR / "commands").glob("*.md"))
+    # A command that shares a skill's name must carry state (a scratch knob); otherwise `/<skill>` already does it.
+    twins = [c for c in cmd_dir if c in SKILLS and "scratch/" not in text(CURSOR / "commands" / f"{c}.md")]
+    rows.append(
+        check(
+            "no-command-twins",
+            cmd_dir == sorted(COMMANDS)
+            and not twins
+            and not (CURSOR / "skills" / "thermonuclear").exists()
+            and "thermonuclear" not in bias
+            and "008-no-command-twins.md" in agents,
+            f"ADR 008: commands are knobs only; twins={twins}",
+        )
+    )
+    phrasings = text(ROOT / "docs" / "evals" / "phrasings.md")
+    rows.append(
+        check(
+            "eval-runs-not-strings",
+            (ROOT / "tools" / "eval-run.py").is_file()
+            and "eval-run" in eval_md
+            and "phrasings" in eval_md
+            and sum(1 for line in phrasings.splitlines() if line.startswith("| ") and "|" in line[2:]) >= 10,
+            "eval.md points at the headless runner and a phrasing fixture with rows",
         )
     )
     rows.append(
@@ -407,6 +470,13 @@ def run_checks(*, strict_install: bool) -> list[dict]:
     )
     cmd_list = plugin.get("commands") or []
     rule_list = plugin.get("rules") or []
+    rows.append(
+        check(
+            "plugin-hooks",
+            plugin.get("hooks") == "./.cursor/hooks.json" and len(cmd_list) == len(COMMANDS),
+            "plugin ships the fence hook and only the three knobs",
+        )
+    )
     for name in COMMANDS:
         needle = f"./.cursor/commands/{name}.md"
         rows.append(
@@ -437,23 +507,30 @@ def run_checks(*, strict_install: bool) -> list[dict]:
         )
     )
 
-    cache = Path.home() / ".cursor" / "plugins" / "cache" / "troy-ll-cursor-maxxing"
+    cache_roots = [
+        Path.home() / ".cursor" / "plugins" / "cache" / "troy-ll-unfurnished",
+        Path.home() / ".cursor" / "plugins" / "cache" / "troy-ll-cursor-maxxing",
+    ]
     stale = False
     detail = "no cache"
-    if cache.is_dir():
-        plugin_caches = list(cache.glob("unfurnished/*/")) + list(cache.glob("cursormax/*/"))
-        caches = sorted(plugin_caches, key=lambda p: p.stat().st_mtime, reverse=True)
-        if caches:
-            newest = caches[0]
-            c_bias = text(newest / ".cursor" / "rules" / "unfurnished-bias.mdc") or text(
-                newest / ".cursor" / "rules" / "cursormax-bias.mdc"
-            )
-            stale = (
-                newest.parent.name != "unfurnished"
-                or "Docs → sdd" in c_bias
-                or "File on disk" not in c_bias
-            )
-            detail = str(newest)
+    caches: list[Path] = []
+    for cache in cache_roots:
+        if cache.is_dir():
+            caches.extend(cache.glob("unfurnished/*/"))
+            caches.extend(cache.glob("cursormax/*/"))
+    if caches:
+        newest = max(caches, key=lambda p: p.stat().st_mtime)
+        c_bias = text(newest / ".cursor" / "rules" / "unfurnished-bias.mdc") or text(
+            newest / ".cursor" / "rules" / "cursormax-bias.mdc"
+        )
+        stale = (
+            "cursor-maxxing" in str(newest).replace("\\", "/").lower()
+            or newest.parent.name != "unfurnished"
+            or "Docs → sdd" in c_bias
+            or "Kickoff →" in c_bias
+            or "File on disk" in c_bias
+        )
+        detail = str(newest)
     if strict_install:
         rows.append(
             check(
@@ -634,6 +711,11 @@ class TestNameSeating(unittest.TestCase):
         self.assertIn("even if they asked", bias)
         self.assertIn("do not delete", bias)
         self.assertIn("do-not-map", bias.replace(" ", "").replace("`", ""))
+        # 006: kernel, not an if-then slot map
+        self.assertNotIn("kickoff →", bias)
+        self.assertNotIn("file on disk", bias)
+        self.assertNotIn("no checkable done-line", bias)
+        self.assertIn("workflow runtime", bias)
         # Attached other orchestra this turn → skip slots; do not name poteto
         self.assertIn("attached another pack", bias)
         self.assertNotIn("poteto", bias)
@@ -650,6 +732,74 @@ class TestNameSeating(unittest.TestCase):
         self.assertIn("do not pull tdd", bias)
         self.assertIn("do not wrap", bias)
         self.assertIn("do not wrap", cm)
+
+
+class TestFence(unittest.TestCase):
+    """ADR 007: the two hard fences run as hooks, not prose."""
+
+    FENCE = CURSOR / "hooks" / "fence.py"
+
+    def fence(self, payload: dict, cwd: Path = ROOT) -> dict:
+        proc = subprocess.run(
+            [sys.executable, str(self.FENCE)],
+            input=json.dumps(payload),
+            capture_output=True,
+            text=True,
+            cwd=cwd,
+        )
+        self.assertIn(proc.returncode, (0, 2), proc.stderr)
+        return json.loads(proc.stdout or "{}")
+
+    def write(self, path: str, cwd: Path = ROOT) -> dict:
+        return self.fence(
+            {
+                "hook_event_name": "preToolUse",
+                "tool_name": "Write",
+                "tool_input": {"path": path, "contents": "x"},
+                "cwd": str(cwd),
+                "workspace_roots": [str(cwd)],
+            },
+            cwd,
+        )
+
+    def shell(self, command: str, cwd: Path) -> dict:
+        return self.fence(
+            {"hook_event_name": "beforeShellExecution", "command": command, "cwd": str(cwd)},
+            cwd,
+        )
+
+    def test_write_living_owner_denied(self) -> None:
+        for p in ("README.md", "AGENTS.md", "docs/eval.md", "docs/decisions/001-native-first.md"):
+            out = self.write(str(ROOT / p))
+            self.assertEqual(out["permission"], "deny", p)
+            self.assertIn("patch in place", out["agent_message"].lower())
+
+    def test_write_missing_or_non_owner_allowed(self) -> None:
+        self.assertEqual(self.write(str(ROOT / "docs" / "decisions" / "999-nope.md"))["permission"], "allow")
+        self.assertEqual(self.write(str(ROOT / "tools" / "pack-check.py"))["permission"], "allow")
+        self.assertEqual(self.write("scratch/notes.md")["permission"], "allow")
+
+    def test_git_scratch_fence(self) -> None:
+        with tempfile.TemporaryDirectory() as d:
+            repo = Path(d)
+            git = lambda *a: subprocess.run(["git", *a], cwd=repo, check=True, capture_output=True)
+            git("init", "-q")
+            git("config", "user.email", "t@t")
+            git("config", "user.name", "t")
+            (repo / "scratch").mkdir()
+            (repo / "scratch" / "a.md").write_text("x", encoding="utf-8")
+            (repo / "ok.md").write_text("x", encoding="utf-8")
+            self.assertEqual(self.shell("git add scratch/a.md", repo)["permission"], "deny")
+            self.assertEqual(self.shell("git add .", repo)["permission"], "deny")
+            self.assertEqual(self.shell("git add ok.md", repo)["permission"], "allow")
+            git("add", "-f", "scratch/a.md")
+            self.assertEqual(self.shell('git commit -m "x"', repo)["permission"], "deny")
+            git("reset", "-q", "scratch/a.md")
+            git("add", "ok.md")
+            self.assertEqual(self.shell('git commit -m "x"', repo)["permission"], "allow")
+            (repo / ".gitignore").write_text("scratch/\n", encoding="utf-8")
+            self.assertEqual(self.shell("git add .", repo)["permission"], "allow")
+            self.assertEqual(self.shell("git status", repo)["permission"], "allow")
 
 
 if __name__ == "__main__":

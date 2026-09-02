@@ -1,16 +1,14 @@
 # Unfurnished
 
-Cursor-native workflow pack. Don't attach Claude furniture to Cursor. The room looks empty. That is the point. Was Cursor Maxxing.
+Cursor-native workflow pack. Don't attach Claude furniture to Cursor. The room looks empty. That is the point.
 
 This is not a token-golf optimizer. It points Agent at Plan, Ask, Debug, Task, Grep, Browser, and compact — the Cursor plan you already pay for — instead of cloning graph, memory, or router furniture. Skills fill gaps the IDE does not ship. Install it and talk; slash names are optional. Other plugins may run alongside. Not a Claude Code pack.
-
-We landed t1-nook in-session (Red green, `docs/design.md` kept Keyboard and Retry, fixture restored red). That is one transcript, scored as user turns and extra tool calls — not a cost class, not n ≥ 3, not a 004 promote. Re-import the plugin or live chats still load the old `cursormax` cache.
 
 A few skills, a few knobs, a few short priors. Nothing that wraps something Cursor already ships. Stack-agnostic: same pack on a CLI, a SaaS, or a pipeline.
 
 ## Start here
 
-1. Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Cursor-Maxxing`. Each push to this repo updates the install.
+1. Customize → Plugins → Import marketplace, paste GitHub `Troy-LL/Unfurnished`. Each push to this repo updates the install. Re-import if an older install still says Cursor-Maxxing or cursormax.
 2. Chat. The pack is on. Docs, features, kickoff, verify, and ship can pull themselves. A job with no checkable done-line gets an interview. You do not need `/unfurnished` first.
 3. **`/unfurnished off`** mutes pack slots in this workspace (`scratch/unfurnished-off`; do not commit). **`/unfurnished on`** turns them back on. Customize → disable plugin is the hard off. Other plugins may run alongside; use soft-off only when you want Unfurnished quiet.
 
@@ -30,7 +28,7 @@ Catalog: [`.cursor-plugin/marketplace.json`](.cursor-plugin/marketplace.json) (w
 
 ## What fires without you typing it
 
-The test: could the agent usefully reach for this on its own? If yes, it is model-invoked. You can still type the `/` if you want that session by name.
+The test: could the agent usefully reach for this on its own? If yes, it is model-invoked. You can still type the `/` if you want that session by name. These fire from skill descriptions, not from the always-on prior.
 
 | Skill | When it should pull |
 |-------|---------------------|
@@ -39,7 +37,6 @@ The test: could the agent usefully reach for this on its own? If yes, it is mode
 | `grill` | No checkable done-line, align / stress-test a plan. `/grill docs` then `sdd` |
 | `blueprint` | New project or whole-job kickoff. Not mid-task. No model picking unless they asked |
 | `verify` | Multi-file work about to be called done |
-| `thermonuclear` | Adversarial in-session review |
 | `pre-flight` | About to ship |
 | `ticket` | Feature/fix with no path or no named failing test. Local scratch pointer, not GitHub |
 | `evals` | Pipelines, traces into fixtures, cost class for this repo. Do not pin a vendor model |
@@ -47,30 +44,37 @@ The test: could the agent usefully reach for this on its own? If yes, it is mode
 | `after-compact` | Chat was compacted. Opt out with `/keep off` |
 | `unfurnished` | They asked what this pack is, or pasted a job after `/unfurnished` |
 
-`tdd` is the same idea as a prior: feature or fix, not a throwaway script.
+`tdd` is the same idea as a prior: feature or fix, not a throwaway script. Adversarial review is not a skill here: use the `bugbot` / `security-review` Task types Cursor ships ([008](docs/decisions/008-no-command-twins.md)).
 
 ## What only you start
 
-These must not run unprompted.
+These must not run unprompted. Every skill above is also `/<skill>`; there are no command twins ([008](docs/decisions/008-no-command-twins.md)).
 
 | Type this | What it does |
 |-----------|--------------|
-| `/deepen` | List deepening candidates, wait, grill the pick |
+| `/deepen` | Skill, user-only. List deepening candidates, wait, grill the pick |
 | `/voice` | `plain` \| `ste` \| `off` |
 | `/keep` | Opt out of after-compact (`/keep off`). Default is on |
 | `/unfurnished off` / `on` | Mute or restore pack slots in this workspace |
 
+## What actually blocks
+
+Two fences are hooks, not sentences ([007](docs/decisions/007-hooks-for-hard-fences.md)). `.cursor/hooks/fence.py` denies a full-file write to a living durable owner (patch in place instead) and any `git add` / `git commit` that would put `scratch/` in history. It needs `python` on PATH and fails open without it.
+
 Product docs are **`sdd`**. Implementation is **`sdd-eng`**. Both ship in this pack, adopted from [Troy-LL/troysdd](https://github.com/Troy-LL/troysdd) (see `.cursor/skills/sdd/UPSTREAM.md`). You do not need a second plugin for them. If you already installed the troysdd plugin, turn one of them off so `/sdd` is not doubled.
 
-Priors in `.cursor/rules/`: `yagni-bias` (~40 words) and `unfurnished-bias` (natives + one slot). Both always on. `@yagni`, `tdd`, and `@blast-radius` attach when the task matches, or when you `@` them.
+Priors in `.cursor/rules/`: `yagni-bias` (~40 words) and `unfurnished-bias` (kernel: natives, one slot, no extra probes — not a slot map). Both always on. `@yagni`, `tdd`, and `@blast-radius` attach when the task matches, or when you `@` them.
 
 ## Why it looks like this
 
-Three decisions do most of the work.
+Four decisions do most of the work.
 
 - **Native first.** Claude Code packs add graph indexes, memory, session files, routers, and overnight loops because that host needs them. Cursor already searches, remembers, routes, checkpoints, and compacts. Codegraph went out for that reason. A new add has to name a gap the IDE does not cover. → [001](docs/decisions/001-native-first.md)
 - **Few first shots, not token golf.** Efficiency here means the first few attempts are accepted, out of the box, on whatever model the host picked. Not one-shot perfection. Cursor often does not show tokens — we count shorter sessions and fewer extra tool calls. → [002](docs/decisions/002-first-shot-efficiency.md)
 - **Workflow, not stack.** We do not know what you are building and do not need to. Everything works the same on a Rust CLI, a Next.js SaaS, or a data pipeline. Stack guides and framework integrations stay out. → [003](docs/decisions/003-workflow-not-stack.md)
+- **Kernel, not a slot map.** Always-on is constraints. Which skill runs is per-task, from its description. We do not clone Claude’s JS workflow runtime; fan-out is Task. → [006](docs/decisions/006-kernel-not-slot-map.md)
+
+Two more keep it honest: hard fences are hooks, not prose ([007](docs/decisions/007-hooks-for-hard-fences.md)); no command twins of skills and no review skill of our own ([008](docs/decisions/008-no-command-twins.md)).
 
 <details>
 <summary><strong>What we deliberately leave out</strong> — if Cursor ships it, we do not wrap it</summary>
@@ -82,6 +86,8 @@ If it assumes your stack, it belongs in your project rules instead.
 | Graph indexes, codegraph, extra grep | Instant Grep, embeddings, Explore |
 | Session or memory plugins | Chat resume, rules, Automation Memories |
 | Auto-routers / named-agent orchestrators | Task, `/create-subagent`, Plan/Ask/Debug, best-of-n |
+| Claude dynamic workflows / JS orchestrator | Task, `/create-subagent`, `/best-of-n` ([006](docs/decisions/006-kernel-not-slot-map.md)) |
+| Command stubs that only point at a skill | `/<skill>` already invokes it ([008](docs/decisions/008-no-command-twins.md)) |
 | Hook frameworks, hook observability dashboards | `hooks.json`, `/create-hook` |
 | Checkpoint / rewind wrappers | Agent checkpoints, `/rewind` |
 | ccusage-style cost CLIs | Usage dashboard, statusline token % |

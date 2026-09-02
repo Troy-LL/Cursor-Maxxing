@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "command": "python .cursor/hooks/fence.py",
+        "matcher": "Write",
+        "timeout": 10
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "python .cursor/hooks/fence.py",
+        "matcher": "git\\s+(add|commit)|git\\s+-\\S+\\s+(add|commit)",
+        "timeout": 10
+      }
+    ]
+  }
+}

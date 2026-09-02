@@ -8,6 +8,7 @@ Portable constitution. Use this when the guidebook repo files are not in the wor
 - First few attempts accepted, net of tax, out of the box, on whatever model the host picked. Expertise is on-demand. `AGENTS.md` (the host repo) stays a map: read it, then at most two owners. Do not paste.
 - Workflow, not stack. A piece must work unchanged on a project we have never seen. Adopt a battle-tested upstream with attribution; do not rewrite it.
 - A new add must name a gap Cursor does not ship.
+- Always-on is a kernel (natives, one slot, no extra probes). Skills pull on match. Do not freeze a slot map in the prior. Do not clone a Claude workflow runtime.
 
 ## Catalog
 
@@ -22,7 +23,6 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | `sdd-eng` | Behavior change against the map (adopted from troysdd) |
 | `grill` | Frontier interview when there is no checkable done-line. `/grill docs` then `sdd` |
 | `blueprint` | Whole-job kickoff. Not mid-task. Model plan only if they asked about cost |
-| `thermonuclear` | In-session adversarial review & loop auditor |
 | `verify` | In-turn Definition-of-Done verification gate |
 | `pre-flight` | Pre-launch build, secret & deployment audit |
 | `ticket` | Local TDD pointer in `scratch/tickets/`. Not a GitHub/Linear wrap |
@@ -43,7 +43,8 @@ Who can reach it is the split. Model-invoked: the agent may pull it when the tas
 | Prior | What |
 |-------|------|
 | `yagni-bias` | Always-on, ~40 words |
-| `unfurnished-bias` | Always-on. Maximize natives, one slot, no extra probes. On unless `scratch/unfurnished-off` exists. Alongside other plugins. If they attached another pack's skill this turn: skip slots, do not pull tdd, do not wrap their tools. Do not map scratch |
+| `unfurnished-bias` | Always-on kernel, not a slot map. Maximize natives, one slot, no extra probes. On unless `scratch/unfurnished-off` exists. Alongside other plugins. Owns the scratch and living-owner fences |
+| `fence.py` hook | Hard stop: blocks a full-file Write to a living durable owner and any `git add`/`commit` that would ship `scratch/`. Fails open |
 | `@yagni` | 7-rung ladder |
 | `tdd` | Red-green on a feature or fix. Skip only if you say why |
 | `@blast-radius` | Said → cited → walked → ran |
@@ -86,13 +87,7 @@ Spawn with Task. Pick the type. Do not invent a named agent. Do not wrap Bugbot 
 | Isolated parallel attempts | `best-of-n-runner` | inherit |
 | Multi-step research or implement | `generalPurpose` | inherit |
 
-`inherit` is Auto: same model as this chat. Use another slug only when the user named it or asked for a class:
-
-- Fast fan-out: `composer-2.5-fast`, `gemini-3.7-flash-high`, `cursor-grok-4.6-high-fast`
-- Deep: inherit, or the slug they named
-- API / open-source / other Gemini: only if that slug is in the Task list this session. If it is not, say unavailable. Do not substitute.
-
-Slugs rot. Types do not. Read the Task tool list this session before passing `model`.
+`inherit` is Auto: same model as this chat. Pass another `model` only when the user named a slug or asked for a class (fast fan-out vs deep); take the slug from the Task tool list in this session. If it is not listed, say unavailable. Do not substitute. Slugs rot; types do not; this file names no slug.
 
 ## Task prompt
 

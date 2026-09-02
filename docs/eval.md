@@ -25,3 +25,17 @@ Count from the transcript, not from a missing dashboard:
 3. Success = that dummy's `Red` command exit 0 after the agent stops, plus the design-file keep rule above when the dummy ships a `docs/design.md`.
 
 If a usage-dashboard scrape exists, record tokens as a note. Do not block a trace on missing tokens.
+
+## Run it
+
+Strings in files are not evidence; `pack-check` only proves the words are there. Runs come from the Cursor CLI, headless, with this repo as the plugin:
+
+```bash
+python tools/eval-run.py --dummy t1-nook --arm always-cheap --model <picker slug> --n 3
+python tools/eval-run.py --dummy t1-nook --arm routed --n 3        # Auto
+python tools/eval-run.py --phrasings                               # docs/evals/phrasings.md
+```
+
+Each dummy run copies the dummy to a temp dir, runs the agent once, runs the Red command, checks the design-keep rule, and writes one trace to `docs/evals/traces/` (turns = 1 by construction; tool calls from stream-json). The 004 gate reads those traces.
+
+[`docs/evals/phrasings.md`](evals/phrasings.md) is the routing fixture: plain asks → the skill that should pull. After [006](decisions/006-kernel-not-slot-map.md) the descriptions are the router, so a phrasing that misses is a description bug. A row under 2/3 means rewrite that skill's `description:`, not the phrase.

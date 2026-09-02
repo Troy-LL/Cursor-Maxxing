@@ -1,13 +1,13 @@
 {
   "name": "unfurnished",
   "displayName": "Unfurnished",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Workflow pack: spec docs, implement against the map, verify before you yield, pre-flight before you ship. Don't attach Claude furniture to Cursor.",
   "author": {
     "name": "Troy"
   },
-  "homepage": "https://github.com/Troy-LL/Cursor-Maxxing",
-  "repository": "https://github.com/Troy-LL/Cursor-Maxxing",
+  "homepage": "https://github.com/Troy-LL/Unfurnished",
+  "repository": "https://github.com/Troy-LL/Unfurnished",
   "keywords": [
     "unfurnished",
     "native-first",
@@ -27,19 +27,9 @@
   "commands": [
     "./.cursor/commands/unfurnished.md",
     "./.cursor/commands/voice.md",
-    "./.cursor/commands/keep.md",
-    "./.cursor/commands/after-compact.md",
-    "./.cursor/commands/grill.md",
-    "./.cursor/commands/blueprint.md",
-    "./.cursor/commands/deepen.md",
-    "./.cursor/commands/thermonuclear.md",
-    "./.cursor/commands/verify.md",
-    "./.cursor/commands/pre-flight.md",
-    "./.cursor/commands/evals.md",
-    "./.cursor/commands/ticket.md",
-    "./.cursor/commands/sdd.md",
-    "./.cursor/commands/sdd-eng.md"
+    "./.cursor/commands/keep.md"
   ],
+  "hooks": "./.cursor/hooks.json",
   "rules": [
     "./.cursor/rules/yagni-bias.mdc",
     "./.cursor/rules/unfurnished-bias.mdc",
